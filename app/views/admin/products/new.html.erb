@@ -1,0 +1,39 @@
+<%= form_for(@product, url: "admin/products") do |f| %>
+
+	<div class="error">
+	<% if @product.errors.any? %>
+		<h2><%= @product.errors.count %>件のエラーが発生しました。</h2>
+		<ul>
+			<%= @product.errors.full_messages.each do |message| %>
+				<li><p>error</p><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+	</div>
+	
+	<div class="field ">
+		<%= f.label :name %><br>
+		<%= f.text_field :name %>
+	</div>
+
+    <div class="field ">
+		<%= f.label :introduction %><br>
+		<%= f.text_area :introduction %>
+	</div>
+
+    <div class="field ">
+		<%= f.label :price %><br>
+		<%= f.text_field :price %>
+	</div>
+
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+
+    <div class="field">
+		<%= f.label :image %>
+		<%= f.attachment_field :product_image %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit class: "btn btn-primary" %>
+	</div>
+<% end %>
