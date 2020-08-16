@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_075927) do
+ActiveRecord::Schema.define(version: 2020_08_16_093224) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2020_08_16_075927) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cart_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "client_id"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -37,11 +45,62 @@ ActiveRecord::Schema.define(version: 2020_08_16_075927) do
     t.string "phone_number"
     t.string "postal_code"
     t.text "address"
-    t.integer "deleted_user"
+    t.integer "deleted_user", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.integer "is_active", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "price"
+    t.integer "count"
+    t.integer "making_status", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "client_id"
+    t.string "postal_code"
+    t.string "address"
+    t.string "name"
+    t.integer "total_bill"
+    t.integer "payment_method"
+    t.integer "postage"
+    t.integer "status", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "name"
+    t.integer "price"
+    t.string "product_image_id"
+    t.text "introduction"
+    t.integer "is_active", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "client_id"
+    t.text "address"
+    t.string "destination"
+    t.string "postal_code"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
