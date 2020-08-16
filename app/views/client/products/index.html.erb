@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-3">
+      <!-- ここにはジャンル検索のテンプレートが入ります -->
+    </div>
+
+    <div class="col-xs-9">
+      <div class="products-index">
+        <h2>商品一覧(全 <%= @products.count %> 件)</h2>
+        <div class="product-box">
+          <% @products.each do |product| %>
+            <%= link_to client_product_path(product.id) do %>
+              <div class="product">
+                <div class="product-image">
+                  <%= attachment_image_tag product, :product_image %>
+                </div>
+                <div class="product-name">
+                  <%= product.name %>
+                </div>
+                <div class="product-price">
+                  <%= product.price %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
