@@ -13,3 +13,29 @@
  *= require_self
  */
  @import "bootstrap";
+
+ header{
+   width: 100%;
+   height: 100px;
+   background-color: #FFFF88;
+
+   .head-container{
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+
+     .header-logo{
+       background-image: url(cake-logo.jpg);
+       background-size: cover;
+       background-position: center;
+       width: 20%;
+       height: 80px;
+     }
+
+     .header-link{
+       a{
+         margin: 2px;
+       }
+     }
+   }
+ }
