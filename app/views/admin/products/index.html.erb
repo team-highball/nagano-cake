@@ -4,6 +4,7 @@
 					<th>商品ID</th>
 					<th>商品名</th>
 					<th>税抜き価格</th>
+                    <th>ジャンル</th>
 					<th>ステータス</th>
 				</tr>
 			</thead>
@@ -16,6 +17,9 @@
 						<%= link_to product.name, admin_product_path(product.id)%>
 					</td>
 					<td><%= product.price %></td>
+                    <td><% @genre = Genre.find(product.id)%>
+                            <%= @genre.name %>
+                    </td>
 					<td><% if product.is_active == 1 %>
                             販売中
                         <% else %>
