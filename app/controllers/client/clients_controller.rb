@@ -9,7 +9,7 @@ class Client::ClientsController < ApplicationController
     end
 
     def show
-        
+        @client = current_client
     end
     
     def destroy
