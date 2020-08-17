@@ -1,0 +1,7 @@
+<h3>商品詳細</h3>
+<%= attachment_image_tag(@product, :product_image,  size: "50x50", format: 'jpeg', fallback: "no-image-mini.jpg") %>
+<p>商品名：<%= @product.name %></p>
+<p>商品説明：<%= @product.introduction %></p>
+<p>ジャンル：<%= @genre.name %></p>
+<p>税込価格(税抜価格)：(<%= @product.price %>)円</p>
+<p>販売ステータス：<%= @product_status %></p>

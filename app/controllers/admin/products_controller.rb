@@ -1,22 +1,28 @@
 class Admin::ProductsController < ApplicationController
 
     def index
+        @products = Product.all
         
     end
 
     def show
-        
+        @product = Product.find(params[:id])
+        @genre = Genre.find(@product.genre_id)
+        if @product.is_active == 1
+            @product_status = "販売中"
+        else
+            @product_status = "販売停止中"
+        end
     end
 
     def new
         @product = Product.new
-        @genres = Genre.all
     end
 
     def create
-        @product = Product.new(params[:id])
+        @product = Product.new(product_params)
         if @product.save
-            redirect_to admin_product_path(params[:id])
+            redirect_to admin_product_path(@product.id)
         else
             render "new"
         end
@@ -38,7 +44,7 @@ class Admin::ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:name, :product_image_id, :introduction, :genre_id, :price, :status)
+        params.require(:product).permit(:name, :product_image, :introduction, :genre_id, :price, :status)
     end
     
 
