@@ -13,12 +13,15 @@
 				<tr>
                     <td><%= product.id %></td>
 					<td>
-						<%= link_to product.name admin_product_path(product.is)%>
+						<%= link_to product.name, admin_product_path(product.id)%>
 					</td>
 					<td><%= product.price %></td>
-					<td><%= product %></td>
-					<td><%= book.book_comments.count %></td>
-					<td class="book_<%= book.id %>"><%= render "favorites/favorite", book: book %></td>
+					<td><% if product.is_active == 1 %>
+                            販売中
+                        <% else %>
+                            販売停止中    
+                        <% end %>
+                    </td>
 				</tr>
 				<% end %>
 			</tbody>
