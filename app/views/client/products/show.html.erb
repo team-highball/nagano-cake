@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <!-- ここにはジャンル検索の部分テンプレートが入ります -->
+    </div>
+
+    <div class="col-xs-9">
+      <div class="product-show">
+        <div class="product-image">
+          <%= attachment_image_tag @product.product_image_id %>
+        </div>
+        <div class="product-box">
+          <div class="product-name">
+            <h3><%= @product.name %></h3>
+          </div>
+          <div class="product-introduction">
+            <p><%= @product.introduction %></p>
+          </div>
+          <div class="product-price">
+            <span>
+              <p class="price">¥ <%= @tax_included_price %></p>
+              <p>(税込み)</p>
+            </span>
+          </div>
+        </div>
+        <div class="select-count">
+          <%= form_with model: @cart_products do |f| %>
+            <p>個数選択 :</p><%= f.number_field :count, min:1, max:100 %>
+            <%= f.submit "カートに入れる" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

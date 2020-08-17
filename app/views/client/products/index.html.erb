@@ -13,7 +13,7 @@
             <%= link_to client_product_path(product.id) do %>
               <div class="product">
                 <div class="product-image">
-                  <%= attachment_image_tag product, :product_image %>
+                  <%= attachment_image_tag product, :product_image, size: "300x200", format: "jpeg" %>
                 </div>
                 <div class="product-name">
                   <%= product.name %>

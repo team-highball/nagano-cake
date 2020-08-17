@@ -24,6 +24,9 @@
               <%= link_to "ログアウト",    destroy_admin_session_path, class: "btn btn-outline-primary", method: :delete %>
             </div>
           <%# <% else %>
+            <div class="welcom-message">
+              <p>ようこそ、 <strong><%= current_user.name %></strong> さん！</p>
+            </div>
             <div class="client_login">
               <%= link_to "マイページ", "#", class: "btn btn-outline-primary" %>
               <%= link_to "商品一覧",      client_products_path,class: "btn btn-outline-primary" %>
