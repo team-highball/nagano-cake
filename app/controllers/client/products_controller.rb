@@ -6,7 +6,9 @@ class Client::ProductsController < ApplicationController
 
     def show
       @product = Product.find(params[:id])
-      @tax_included_price = @product.tax
+      @tax_price = @product.price
+      # taxメソッドは後々追加
+      @tax_included_price = @tax_price
     end
 
 end
