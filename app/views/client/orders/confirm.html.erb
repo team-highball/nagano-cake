@@ -16,4 +16,27 @@
   <!-- 合計金額の変数定義 -->
   <% sum_all = 0 %>
   <% @cart_products.each do |cp| %>
+  <div class="row">
+    <div class="col-lg-3">
+      <%= link_to product_path(cp.product) do %>
+        <%= attachment_image_tag(cp.product, :product_image, size: "150x100", fallback: "no_image.jpg") %>
+      <% end %>
+    </div>
+    <div class="col-lg-2">
+      <%= link_to product_path(cp.product) do %>
+        <%= cp.product.name %>
+      <% end %>
+    </div>
+    <div class="col-lg-2">
+      <%= price_include_tax(cp.product.price) %>
+    </div>
+    <div class="col-lg-2">
+      <%= cp.count %>
+    </div>
+    <div class="col-lg-2">
+      <%= sum_poduct = price_include_tax(cp.product.price).to_i * cp.count %>円
+      <% sum_all += sum_poduct %>
+    </div>
+  </div>
+  <% end %>
 </div>
