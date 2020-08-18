@@ -22,7 +22,7 @@
 		<%= f.text_area :introduction %>
 	</div>
 
-	<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+	<%= f.collection_select :genre_id, Genre.where(is_active: 1), :id, :name, include_blank: "選択して下さい" %>
 
     <div class="field ">
 		<%= f.label :price %><br>
