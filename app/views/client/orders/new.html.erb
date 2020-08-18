@@ -1,12 +1,50 @@
 <div class="order-show">
 
+  <% if @order.confirming.blank? %>
+
   <!-- ここから、注文情報入力画面 -->
 
-  <h2>注文情報入力</h2>
+    <h2>注文情報入力</h2>
+    <%= form_with url: new_client_order_path do |f| %>
+      <h3>支払い方法</h3>
+        <label><%= f.radio_button :status, 1, checked: true %>クレジットカード</label> <br>
+        <label><%= f.radio_button :status, 2 %>銀行振り込み</label>
+      <h3>お届け先</h3>
+        <label><%= f.radio_button [:address, @client.address, :postal_code, @cliatn.postal_code, :name, @cilent.name] checked: true %>ご自身の住所</label>
+          <div class="current_client_address">
+            <%= @client_address %>
+          </div>
+        <!-- ここはshipping_addressができてから作成 -->
+        <label>登録済住所から選択</label>
+        <!-- ここはshipping_addressができてから作成 -->
+    <% end %>
 
-  <%= form_with url: new_client_order_path do |f| %>
-    <h3>支払い方法</h3>
-    <%= f.radio_button : %>
-  <% end %>
   <!-- ここまで -->
+  <% else %>
+  <!-- ここから確認画面の表示 -->
+
+  <h2>注文情報確認</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_products.each do |c| %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <!-- ここまで -->
+
+  <% end %>
 </div>
