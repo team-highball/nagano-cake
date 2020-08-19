@@ -6,11 +6,11 @@ class Client::CartProductsController < ApplicationController
 #カート内商品一覧
     def index
         @cart_products = @client.cart_products.all
-        Product.all.sum(:price)
+        # Product.all.sum(:price)
     end
 
     def create
-        @cart_product = current_client.cart_products.new(cart_item_params)
+        @cart_product = current_client.cart_products.new(cart_product_params)
     # カートに現在入っている商品　＝　カートに入っている商品IDと顧客が選んだ商品のIDが合致している商品
         @current_product = CartProduct.find_by(product_id: @cart_product.product_id,client_id: @cart_product.client_id)
     # カートに同じ商品がなければ新規追加、あれば既存のデータと合算
