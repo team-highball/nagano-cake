@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <h2>注文情報入力</h2>
+  </div>
+
+  <%= form_with(model: @order, local: true, url: { action: 'confirm'}) do |f| %>
+
+  <!-- 支払方法 -->
+  <div class="row">
+    <h3><%= f.label :支払方法 %></h3>
+    <label><%= f.radio_button :status, 1, {checked: true} %> クレジットカード</label>
+    <label><%= f.radio_button :status, 2, {} %> 銀行振込</label>
+  </div>
+
+  <!-- お届け先 -->
+  <div class="row">
+    <h3><%= f.label :お届け先 %></h3>
+
+    <!-- 自身の住所 -->
+    <p>
+      <label><%= f.radio_button :add, 1, checked: "checked" %> ご自身の住所</label> <br />
+      <%= @client.postal_code %>
+      <%= @client.address %>
+      <%= @client.first_name + @client.last_name %>
+    </p>
+
+    <!-- 登録済住所 -->
+    <p>
+      <label><%= f.radio_button :add, 2 %> 登録住所から選択</label>
+      <%# <%= f.collection_select :address, @client, :id, :address %>
+    </p>
+
+    <!-- 新しい住所 -->
+    <p>
+      <label><%= f.radio_button :add, 3 %> 新しいお届け先</label>
+
+      <%= f.fields_for :new_add do |na| %>
+        <strong>郵便番号(ハイフンなし)</strong>
+        <%= na.text_field :postal_code, class: 'form_control' %>
+        <strong>住所</strong>
+        <%= na.text_field :address, class: 'form_control' %>
+        <strong>宛名</strong>
+        <%= na.text_field :destination, class: 'form_control' %>
+      <% end %>
+    </p>
+  </div>
+  <!-- お届け先ここまで -->
+
+  <div class="row">
+    <%= f.submit "確認画面へ進む", class: "btn btn-danger" %>
+  </div>
+
+  <% end %>
+</div>
