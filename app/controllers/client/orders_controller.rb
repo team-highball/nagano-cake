@@ -82,6 +82,8 @@ class Client::OrdersController < ApplicationController
         sum_product = price_include_tax(cp.product.price).to_i * cp.count
         sum_all += sum_product
       end
+      @order.total_bill = sum_all + @order.postage
+
 
       # どのラジオボタンを押したかを数字で渡す
       @add = params[:order][:add].to_i
@@ -106,11 +108,8 @@ class Client::OrdersController < ApplicationController
      end
     end
 
-
-
     def thanks
     end
-
 
     private
 
