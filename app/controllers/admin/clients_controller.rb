@@ -1,5 +1,7 @@
 class Admin::ClientsController < ApplicationController
 
+    before_action :authenticate_admin!
+
     def index
         @clients = Client.all
     end
@@ -26,5 +28,5 @@ class Admin::ClientsController < ApplicationController
     def client_params
         params.require(:client).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :postal_code, :address, :phone_number, :email, :deleted_user)
     end
-    
+
 end
