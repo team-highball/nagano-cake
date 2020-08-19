@@ -5,11 +5,15 @@ class Client::OrdersController < ApplicationController
     before_action :set_client
 
     def index
-
+      @orders = @client.orders
     end
 
     def show
       @order = Order.find(params[:id])
+      if @order.client_id != current_client.id
+        redirect_back(fallback_location: root_path)
+        flash[:alert] = "アクセスに失敗しました"
+      end
     end
 
 
@@ -69,7 +73,7 @@ class Client::OrdersController < ApplicationController
 
     def confirm
       @order = Order.new
-      # @cart_products = current_client.cart_products
+      @cart_products = current_client.cart_products
       @order.status = params[:order][:status]
       # どのラジオボタンを押したかを数字で渡す
       @add = params[:order][:add].to_i
@@ -110,7 +114,11 @@ class Client::OrdersController < ApplicationController
 
 
     def order_params
-      params.require(:order).permit(:status, :postal_code, :address, :name)
+      # 注文の際の注文商品も保存するようにする
+      params.require(:order).permit(
+        :status, :postal_code, :address, :name, :postage, :total_bill,
+        order_products_attributes: [:order_id, :product_id, :price, :count, :making_status]
+      )
     end
 
 end
