@@ -34,8 +34,8 @@
         <%= cp.count %>
       </div>
       <div class="col-lg-2">
-        <%= sum_poduct = price_include_tax(cp.product.price).to_i * cp.count %>円
-        <% sum_all += sum_poduct %>
+        <%= sum_product = price_include_tax(cp.product.price).to_i * cp.count %>円
+        <% sum_all += sum_product %>
       </div>
     </div>
   <% end %>

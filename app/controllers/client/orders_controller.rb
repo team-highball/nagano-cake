@@ -75,6 +75,14 @@ class Client::OrdersController < ApplicationController
       @order = Order.new
       @cart_products = current_client.cart_products
       @order.status = params[:order][:status]
+
+      # 合計金額を求める
+      sum_all = 0
+      @cart_products.each do |cp|
+        sum_product = price_include_tax(cp.product.price).to_i * cp.count
+        sum_all += sum_product
+      end
+
       # どのラジオボタンを押したかを数字で渡す
       @add = params[:order][:add].to_i
       case @add
