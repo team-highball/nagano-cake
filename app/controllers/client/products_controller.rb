@@ -9,6 +9,7 @@ class Client::ProductsController < ApplicationController
       @tax_price = @product.price
       # taxメソッドは後々追加
       @tax_included_price = @tax_price
+      @cart_product = CartProduct.new
     end
 
 end
