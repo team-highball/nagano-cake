@@ -1,7 +1,7 @@
 class Client::ClientsController < ApplicationController
 
     def top
-        
+        @products = Product.limit(4)
     end
 
     def about
@@ -12,8 +12,8 @@ class Client::ClientsController < ApplicationController
         @client = current_client
     end
     
-    def destroy
+    def withdrawal
         
     end
-    
+
 end
