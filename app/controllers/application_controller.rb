@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # prepend_before_filter :require_no_authentication, :only => [ :cancel] 
 
   def after_sign_in_path_for(resource)
-    client_products_path
+    client_products_path(genre_sort: 0)
   end
 
   def after_sign_out_path_for(resource)
