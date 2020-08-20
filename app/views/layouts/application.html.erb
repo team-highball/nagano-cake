@@ -34,7 +34,7 @@
               </div>
             <% elsif client_signed_in? %>
                 <div class="welcom-message col-lg-4 col-md-4 col-xs-4">
-                  <p>ようこそ　<%= current_client.first_name + current_client.last_name %>　さん！</p>
+                  <p>ようこそ　<%= current_client.last_name + current_client.first_name %>　さん！</p>
                 </div>
                 <div class="client_login col-lg-5 col-md-5 col-xs-5">
                   <%= link_to "マイページ",    client_client_path(current_client), class: "btn btn-outline-primary" %>

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'client/clients#top'
 
   devise_for :admins, controllers: {
         sessions:      'admins/sessions',
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
         registrations: 'clients/registrations'
     }
 
+root to: 'client/clients#top'
 
     namespace :client do
         get "clients/top" => "clients#top"
