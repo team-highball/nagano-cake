@@ -21,7 +21,7 @@
           <% @products.each do |product| %>
             <%= link_to client_product_path(product.id),class: "product col-xs-3 col-md-3 col-lg-3 col-xl-3" do %>
                 <div class="product-image">
-                  <%= attachment_image_tag product, :product_image, size: "160x120", format: "jpeg" %>
+                  <%= attachment_image_tag product, :product_image, format: "jpeg" %>
                 </div>
                 <div class="product-name">
                   <%= product.name %>
