@@ -11,25 +11,31 @@
 			<th>数量</th>
 			<th></th>
 			<th>小計</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
-<% @cart_products.each do |cart_product| %>
 <tr>
-	<td><%= cart_product.name %></td>
-	<td><%= cart_product.price %></td>
+<% @sum = 0 %>
+<% @cart_products.each do |cart_product| %>
 
-<%= form_for(cart_product, url:cart_product_path(cart_product),method: :patch) do |f| %>
-<% sub_total = cart_product.count.to_i + cart_product.count.to_i %>
-	<td><%= sub_total %></td>
+	<td><%= cart_product.product.name %></td>
+	<td><%= cart_product.product.price %></td>
+	<td><%= cart_product.count %></td>
 
-	<td><%= f.select :count,(1..50) %>
+
+<%= form_for(cart_product, url: client_cart_product_path(cart_product),method: :patch) do |f| %>
+	<!-- # <% sub_total = cart_product.count.to_i %> -->
+		<!-- # <td><%= sub_total %></td> -->
+
+	<td><%= f.select :count,(1..9) %>
 		<%= f.submit "変更する"%>
 	<% end %>
 	</td>
-
-<td>¥<% @sum_price %></td>
+<% sub_price = cart_product.product.price.to_i * cart_product.count.to_i %>
+<td>¥<%= sub_price %></td>
 <td><%= link_to "削除する", client_cart_product_path(cart_product.id), method: :delete %></td>
+<td></td>
 </tr>
 <% end %>
 </tbody>
@@ -38,6 +44,7 @@
 
 <%= link_to "買い物を続ける",client_products_path, class: "btn btn-primary" %>
 <p>合計金額</p>
+
 
 <%= link_to "情報入力に進む", client_orders_path, class: "btn btn-info" %>
 
