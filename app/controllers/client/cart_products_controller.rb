@@ -7,7 +7,7 @@ class Client::CartProductsController < ApplicationController
     def index
         @cart_products = @client.cart_products.all
         # @product = Product.find(params[:cart_product][:product_id])
-        # CartProduct.all.sum(:price)
+        @sub_prices = CartProduct.all.sum(:price)
     end
 
     def create
