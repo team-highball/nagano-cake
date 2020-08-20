@@ -1,3 +1,3 @@
 <h3>管理者画面</h3>
 
-<h3>本日の注文件数 <%= link_to Order.count, admin_orders_path %>件</h3>
+<h3>本日の注文件数 <%= link_to Order.count, admin_orders_path(order_sort: 0) %>件</h3>
