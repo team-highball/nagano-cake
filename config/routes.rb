@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root to: 'client/clients#top'
+
   devise_for :admins, controllers: {
         sessions:      'admins/sessions',
         passwords:     'admins/passwords',
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
         resources :clients, only: [:show]
         resources :cart_products, only: [:create, :update, :destroy, :index]
         delete "cart_products" => "cart_products#destroy_all"
-        post "orders/confirm" => "orders#confirm"
+        get "orders/confirm" => "orders#confirm"
         get "orders/thanks" => "orders#thanks"
         resources :orders, only: [:new, :create, :index, :show,]
         resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]

@@ -3,7 +3,7 @@
     <h2>注文情報入力</h2>
   </div>
 
-  <%= form_with(model: @order, local: true, url: { action: 'confirm'}) do |f| %>
+  <%= form_with(model: @order, local: true, method: :get, url: { action: 'confirm'}) do |f| %>
 
   <!-- 支払方法 -->
   <div class="row">
@@ -27,7 +27,7 @@
     <!-- 登録済住所 -->
     <p>
       <label><%= f.radio_button :add, 2 %> 登録住所から選択</label>
-      <%# <%= f.collection_select :address, @client, :id, :address %>
+      <%= f.collection_select :address, @client.shipping_addresses, :id, :address %>
     </p>
 
     <!-- 新しい住所 -->
