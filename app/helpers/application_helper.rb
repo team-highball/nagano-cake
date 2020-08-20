@@ -5,4 +5,8 @@ module ApplicationHelper
     "#{price.floor}円"
   end
 
+  def simple_time(time)
+    time.strftime("%Y-%m-%d　%H:%M　")
+  end
+
 end

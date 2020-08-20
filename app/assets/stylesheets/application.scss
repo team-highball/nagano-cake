@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_tree .
  *= require_self
  */
  @import "bootstrap";
@@ -19,10 +20,8 @@
    height: 100px;
    background-color: #FFFF88;
 
-   .head-container{
+   .header{
     padding-top: 10px;
-    display: flex;
-    justify-content: space-around;
 
      .header-logo{
        background-image: url(cake-logo.jpg);
@@ -32,10 +31,8 @@
        height: 80px;
      }
 
-     .header-link{
-       a{
-         margin: 2px;
-       }
+     .welcom-message{
+       line-height: 70px;
      }
    }
  }

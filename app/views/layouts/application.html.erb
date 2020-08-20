@@ -12,40 +12,47 @@
   <body>
 
     <header>
-      <div class="head-container">
-        <div class="header-logo"></div>
-        <div class="header-link">
-          <%# <% if %>
-            <div class="admin_login">
-              <%= link_to "商品一覧",     admin_products_path, class: "btn btn-outline-primary" %>
-              <%= link_to "会員一覧",     admin_clients_path,  class: "btn btn-outline-primary" %>
-              <%= link_to "注文履歴一覧",  admin_orders_path,   class: "btn btn-outline-primary" %>
-              <%= link_to "ジャンル一覧",  admin_genres_path,   class: "btn btn-outline-primary" %>
-              <%= link_to "ログアウト",    destroy_admin_session_path, class: "btn btn-outline-primary", method: :delete %>
-            </div>
-          <%# <% else %>
-            <div class="welcom-message">
-              
-            </div>
-            <div class="client_login">
-              <%= link_to "マイページ", "#", class: "btn btn-outline-primary" %>
-              <%= link_to "商品一覧",      client_products_path,class: "btn btn-outline-primary" %>
-              <%= link_to "カート",  "#", class: "btn btn-outline-primary" %>
-              <%= link_to "ログアウト",    destroy_client_session_path, class: "btn btn-outline-primary", method: :delete %>
-            </div>
-          <%# <% else %>
-            <div class="after_login">
-              <%= link_to "About",      client_clients_about_path,    class: "btn btn-outline-primary" %>
-              <%= link_to "商品一覧",    client_products_path,          class: "btn btn-outline-primary" %>
-              <%= link_to "新規登録",    new_client_registration_path,  class: "btn btn-outline-primary" %>
-              <%= link_to "ログイン",    new_client_session_path,       class: "btn btn-outline-primary" %>
-            </div>
-          <%# <% end %>
-          <form>
-            <input type="text" name="" value="" placeholder="検索...">
-          </form>
-        </div>
+      <div class="header container">
+        <div class="row">
+          <div class="header-logo　col-lg-3 col-md-3 col-xs-3">
+            #ロゴ画像
+          </div>
 
+            <% if admin_signed_in? %>
+              <div class="col-lg-4 col-md-4 col-xs-4"></div>
+              <div class="admin_link col-lg-9 col-md-9 col-xs-9">
+                <div class="admin_login">
+                  <%= link_to "商品一覧",     admin_products_path, class: "btn btn-outline-primary" %>
+                  <%= link_to "会員一覧",     admin_clients_path,  class: "btn btn-outline-primary" %>
+                  <%= link_to "注文履歴一覧",  admin_orders_path,   class: "btn btn-outline-primary" %>
+                  <%= link_to "ジャンル一覧",  admin_genres_path,   class: "btn btn-outline-primary" %>
+                  <%= link_to "ログアウト",    destroy_admin_session_path, class: "btn btn-outline-primary", method: :delete %>
+                </div>
+                <form>
+                  <input type="text" name="" value="" placeholder="検索...">
+                </form>
+              </div>
+            <% elsif client_signed_in? %>
+                <div class="welcom-message col-lg-4 col-md-4 col-xs-4">
+                  <p>ようこそ　<%= current_client.first_name + current_client.last_name %>　さん！</p>
+                </div>
+                <div class="client_login col-lg-5 col-md-5 col-xs-5">
+                  <%= link_to "マイページ",    client_client_path(current_client), class: "btn btn-outline-primary" %>
+                  <%= link_to "商品一覧",      client_products_path,class: "btn btn-outline-primary" %>
+                  <%= link_to "カート",        client_cart_products_path, class: "btn btn-outline-primary" %>
+                  <%= link_to "ログアウト",    destroy_client_session_path, class: "btn btn-outline-primary", method: :delete %>
+                </div>
+            <% else %>
+              <div class="col-lg-4 col-md-4 col-xs-4"></div>
+              <div class="after_login col-lg-5 col-md-5 col-xs-5">
+                <%= link_to "About",      client_clients_about_path,    class: "btn btn-outline-primary" %>
+                <%= link_to "商品一覧",    client_products_path,          class: "btn btn-outline-primary" %>
+                <%= link_to "新規登録",    new_client_registration_path,  class: "btn btn-outline-primary" %>
+                <%= link_to "ログイン",    new_client_session_path,       class: "btn btn-outline-primary" %>
+              </div>
+            <% end %>
+
+        </div>
       </div>
     </header>
 
