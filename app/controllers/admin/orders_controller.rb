@@ -17,10 +17,23 @@ class Admin::OrdersController < ApplicationController
     def show
         @order = Order.find(params[:id])
         @client = Client.find(@order.client_id)
+        @order_products = @order.order_products
     end
 
     def update
+        @order = Order.find(params[:id])
+        if @order.update(order_params)
+            redirect_back(fallback_location: root_path)
+        else
+            render "show"
+        end
+        
+    end
 
+    private
+
+    def order_params
+        params.require(:order).permit(:status)
     end
 
 end

@@ -33,10 +33,43 @@
         <tr>
             <td>注文ステータス</td>
             <td>
-                <% if @order.status == 1%>
-                <% elsif @orders.status == 2 %>
+                <%= form_with model: @order, url: admin_order_path(@order),  local: true do |f| %>
+                    <%= f.select :status , [["入金待ち",1],["入金確認",2],["発送準備中",3],["発送完了",4]] %>
+                    <%= f.submit "更新", disable_with: 'Submiting...' %>
+                <% end %>
             </td>
         </tr>
+    </tbody>
+</table>
 
+
+
+<table class="table table-hover table-inverse">
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @order_products.each do |order_product| %>
+        <% @product = Product.find(order_product.product_id) %>
+        <tr>
+            <td><%= @product.name %></td>
+            <td><%= order_product.price %></td>
+            <td><%= order_product.count %></td>
+            <td><%= order_product.price * order_product.count%></td>
+            <td>
+                <%= form_with model: order_product, url: admin_order_order_product_path(order_product.order_id, order_product),  local: true do |f| %>
+                    <%= f.select :status , [["着手不可",1],["制作待ち",2],["制作中",3],["制作完了",4]] %>
+                    <%= f.submit "更新", disable_with: 'Submiting...' %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
     </tbody>
 </table>
