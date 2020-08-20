@@ -22,7 +22,14 @@ class Admin::OrdersController < ApplicationController
 
     def update
         @order = Order.find(params[:id])
+        @orders = @order.order_products
         if @order.update(order_params)
+            if @order.status == 2
+                @order.order_products.each do |order_product|
+                    order_product.making_status = 2
+                    order_product.update(order_product_params)
+                end
+            end
             redirect_back(fallback_location: root_path)
         else
             render "show"
@@ -34,6 +41,10 @@ class Admin::OrdersController < ApplicationController
 
     def order_params
         params.require(:order).permit(:status)
+    end
+
+    def order_product_params
+        params.permit(:making_status)
     end
 
 end

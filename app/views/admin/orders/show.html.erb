@@ -34,7 +34,7 @@
             <td>注文ステータス</td>
             <td>
                 <%= form_with model: @order, url: admin_order_path(@order),  local: true do |f| %>
-                    <%= f.select :status , [["入金待ち",1],["入金確認",2],["発送準備中",3],["発送完了",4]] %>
+                    <%= f.select :status , [["入金待ち",1],["入金確認",2],["制作中",3],["発送準備中",4],["発送完了",5]] %>
                     <%= f.submit "更新", disable_with: 'Submiting...' %>
                 <% end %>
             </td>
@@ -65,7 +65,7 @@
             <td><%= order_product.price * order_product.count%></td>
             <td>
                 <%= form_with model: order_product, url: admin_order_order_product_path(order_product.order_id, order_product),  local: true do |f| %>
-                    <%= f.select :status , [["着手不可",1],["制作待ち",2],["制作中",3],["制作完了",4]] %>
+                    <%= f.select :making_status , [["着手不可",1],["制作待ち",2],["制作中",3],["制作完了",4]] %>
                     <%= f.submit "更新", disable_with: 'Submiting...' %>
                 <% end %>
             </td>
