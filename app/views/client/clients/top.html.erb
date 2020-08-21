@@ -15,7 +15,7 @@
 			<div class="row">
 					<% @products.each do |product| %>
 					<%= attachment_image_tag product, :product_image, :fill, 200, 200, fallback: "no_image.jpg" %>
-					<%= product.name %><br>
+					<%= product.name %>
 					<%= product.price %>円
 					<% end %>
 			</div>

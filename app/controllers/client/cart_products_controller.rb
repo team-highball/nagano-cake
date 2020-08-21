@@ -28,14 +28,15 @@ class Client::CartProductsController < ApplicationController
 #カート内が空でない場合
     else
 #paramsで取得した値は文字列になってしまうので、to_iで整数化させる事が必要
-      @current_product.count += params[:count].to_i
+      @current_product.count += @cart_product.count
 #カート内商品の数量を更新した上で、カート内商品一覧画面へ遷移
-      @current_product.update(cart_product_params)
+      @current_product.update(c_product_params)
       redirect_to client_cart_products_path
       end
     end
 
     def update
+        # if @cart_product.update(cart_product_params)
         if @cart_product.update(cart_product_params)
         redirect_to client_cart_products_path
         flash[:success] = 'カート内の商品を更新しました'
@@ -65,6 +66,10 @@ class Client::CartProductsController < ApplicationController
 
     def cart_product_params
         params.require(:cart_product).permit(:product_id, :client_id, :count)
+    end
+
+    def c_product_params
+        params.permit(:count)
     end
 
 end
