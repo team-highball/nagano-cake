@@ -2,9 +2,9 @@ class Client::ProductsController < ApplicationController
 
     def index
       @genres = Genre.all
-      if params[:genre_sort] == "0"
+      if params[:genre_sort] == "0" || params[:genre_sort] == nil
         @products = Product.all
-      elsif
+      else
         @products = Product.where(genre_id: params[:genre_sort].to_i)
         genre = Genre.find_by(id: params[:genre_sort].to_i)
         @genre_name = genre.name
