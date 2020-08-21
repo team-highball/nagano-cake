@@ -1,6 +1,7 @@
+<div class="container">
 <h3>商品一覧</h3>
 
-<h1><%= link_to "+" , new_admin_product_path %></h1>
+<h1><%= link_to "商品を追加" , new_admin_product_path, class: "btn btn-success" %></h1>
 <table class="table table-hover table-inverse">
     <thead>
         <tr>
@@ -19,17 +20,22 @@
             <td>
                 <%= link_to product.name, admin_product_path(product.id)%>
             </td>
-            <td><%= product.price %></td>
+            <td><%= product.price %> 円</td>
             <td><% @genre = Genre.find(product.genre_id)%>
                     <%= @genre.name %>
             </td>
             <td><% if product.is_active == 1 %>
-                    販売中
+                    <div class="badge badge-primary">
+                      販売中
+                    </div>
                 <% else %>
-                    販売停止中    
+                    <div class="badge badge-danger">
+                      販売停止中
+                    </div>
                 <% end %>
             </td>
         </tr>
         <% end %>
     </tbody>
 </table>
+</div>

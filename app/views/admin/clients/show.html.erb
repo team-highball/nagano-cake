@@ -13,9 +13,13 @@
             <td>顧客ID</td>
             <td><%= @client.id %>(
                 <%if @client.deleted_user == 1%>
-                有効会員
+                <div class="badge badge-primary"">
+                  有効会員
+                </div>
                 <% else %>
-                退会済
+                <div class="badge badge-danger"">
+                  退会済
+                </div>
                 <% end %>)
             </td>
         </tr>
