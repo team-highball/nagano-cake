@@ -8,8 +8,8 @@
   <!-- 支払方法 -->
   <div class="row">
     <h3><%= f.label :支払方法 %></h3>
-    <label><%= f.radio_button :status, 1, {checked: true} %> クレジットカード</label>
-    <label><%= f.radio_button :status, 2, {} %> 銀行振込</label>
+    <label><%= f.radio_button :payment_method, 1, {checked: true} %> クレジットカード</label>
+    <label><%= f.radio_button :payment_method, 2, {} %> 銀行振込</label>
   </div>
 
   <!-- お届け先 -->

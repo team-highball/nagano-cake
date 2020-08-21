@@ -22,7 +22,7 @@
               <div class="col-lg-4 col-md-4 col-xs-4"></div>
               <div class="admin_link col-lg-9 col-md-9 col-xs-9">
                 <div class="admin_login">
-                  <%= link_to "商品一覧",     admin_products_path, class: "btn btn-outline-primary" %>
+                  <%= link_to "商品一覧",     admin_products_path(genre_sort: 0), class: "btn btn-outline-primary" %>
                   <%= link_to "会員一覧",     admin_clients_path,  class: "btn btn-outline-primary" %>
                   <%= link_to "注文履歴一覧",  admin_orders_path,   class: "btn btn-outline-primary" %>
                   <%= link_to "ジャンル一覧",  admin_genres_path,   class: "btn btn-outline-primary" %>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="client_login col-lg-5 col-md-5 col-xs-5">
                   <%= link_to "マイページ",    client_client_path(current_client), class: "btn btn-outline-primary" %>
-                  <%= link_to "商品一覧",      client_products_path,class: "btn btn-outline-primary" %>
+                  <%= link_to "商品一覧",      client_products_path(genre_sort: 0), class: "btn btn-outline-primary" %>
                   <%= link_to "カート",        client_cart_products_path, class: "btn btn-outline-primary" %>
                   <%= link_to "ログアウト",    destroy_client_session_path, class: "btn btn-outline-primary", method: :delete %>
                 </div>
@@ -46,7 +46,7 @@
               <div class="col-lg-4 col-md-4 col-xs-4"></div>
               <div class="after_login col-lg-5 col-md-5 col-xs-5">
                 <%= link_to "About",      client_clients_about_path,    class: "btn btn-outline-primary" %>
-                <%= link_to "商品一覧",    client_products_path,          class: "btn btn-outline-primary" %>
+                <%= link_to "商品一覧",    client_products_path(genre_sort: 0), class: "btn btn-outline-primary" %>
                 <%= link_to "新規登録",    new_client_registration_path,  class: "btn btn-outline-primary" %>
                 <%= link_to "ログイン",    new_client_session_path,       class: "btn btn-outline-primary" %>
               </div>

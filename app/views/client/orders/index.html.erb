@@ -21,31 +21,35 @@
               def simple_time(time)
               time.strftime("%Y-%m-%d　%H:%M　")
               end  -->
-        <%= simple_time(order.created_at) %> 
+        <%= simple_time(order.created_at) %>
       </div>
       <div class="col-lg-3">
-        <div class="row">
-          <%= order.post_code + " " + order.address %>
-        </div>
-        <div class="row">
-          <%= order.name %>
-        </div>
+        <%= order.postal_code + " " + order.address %>　<br>
+        <%= order.name %>
       </div>
       <div class="col-lg-2">
-        <% sum_all = 0 %>
-          <% order.order_products.each do |op| %>
-            <%= op.product.name %> <br>
-            <% sum_all += sub_total.to_i %>
-          <% end %>
+        <% order.order_products.each do |op| %>
+          <%= op.product.name %> <br>
+        <% end %>
       </div>
       <div class="col-lg-2">
-        <%= sum_all += order.postage.to_i %>円
+        <%= order.total_bill %>円
       </div>
       <div class="col-lg-1">
-        <%= status(order) %>
+        <% if order.status == 1 %>
+          <p>入金待ち</p>
+        <% elsif order.status == 2 %>
+          <p>入金確認</p>
+        <% elsif order.status == 3 %>
+          <p>制作中</p>
+        <% elsif order.status == 4 %>
+          <p>発送準備中</p>
+        <% else %>
+          <p>発送済</p>
+        <% end %>
       </div>
       <div class="col-lg-2">
-        <%= link_to "表示する", order_path(order), class: "btn btn-sm btn-danger" %>
+        <%= link_to "表示する", client_order_path(order), class: "btn btn-sm btn-danger" %>
       </div>
     </div>
   <% end %>

@@ -22,7 +22,7 @@
                     def simple_time(time)
                     time.strftime("%Y-%m-%d　%H:%M　")
                     end  -->
-              <%= simple_time(order.created_at) %> 
+              <%= simple_time(@order.created_at) %>
             </div>
           </div>
           <div class="row">
@@ -37,7 +37,7 @@
             <strong>支払方法</strong>
           </div>
           <div class="col-lg-9">
-            <%= payment_method(@order.payment_method) %>
+            <%= @order.payment_method %>
           </div>
         </div>
         <div class="row">
@@ -45,7 +45,17 @@
             <strong>状況</strong>
           </div>
           <div class="col-lg-9">
-            <%= status(@order) %>
+            <% if @order.status == 1 %>
+              <p>入金待ち</p>
+            <% elsif @order.status == 2 %>
+              <p>入金確認</p>
+            <% elsif @order.status == 3 %>
+              <p>制作中</p>
+            <% elsif @order.status == 4 %>
+              <p>発送準備中</p>
+            <% else %>
+              <p>発送済</p>
+            <% end %>
           </div>
         </div>
       </div>
@@ -109,7 +119,7 @@
             <strong>配送料</strong>
           </div>
           <div class="col-lg-6">
-            <%= @order.posting %>円
+            <%= @order.postage %>円
           </div>
         </div>
         <div class="row">
@@ -117,7 +127,7 @@
             <strong>御請求額</strong>
           </div>
           <div class="col-lg-6">
-            <%= sum_all + @order.posting.to_i %>円
+            <%= sum_all + @order.postage.to_i %>円
           </div>
         </div>
       </div>
