@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def price_include_tax(price)
+    price = price * 1.1
+    price.floor
+  end
 
 
   private
