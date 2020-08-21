@@ -1,29 +1,35 @@
-<h3>会員一覧</h3>
-<br>
-<table class="table table-hover table-inverse">
+<div class="container">
+  <h3>会員一覧</h3>
+  <br>
+  <table class="table table-hover table-inverse">
     <thead>
-        <tr>
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
-        </tr>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
     </thead>
 
     <tbody>
-        <% @clients.each do |client| %>
-        <tr>
-            <td><%= client.id %></td>
-            <td><%= link_to "#{client.last_name+client.first_name}" , admin_client_path(client.id) %></td>
-            <td><%= client.email %></td>
-            <td>
-                <% if client.deleted_user == 1%>
-                    有効
-                <% else%>
-                    退会済
-                <% end %>
-            </td>
-        </tr>
-        <% end %>
+      <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.id %></td>
+        <td><%= link_to "#{client.last_name+client.first_name}" , admin_client_path(client.id) %></td>
+        <td><%= client.email %></td>
+        <td>
+          <% if client.deleted_user == 1%>
+          <div class="badge badge-primary">
+            有効
+          </div>
+          <% else%>
+          <div class="badge badge-danger">
+            退会済
+          </div>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
     </tbody>
-</table>
+  </table>
+</div>
