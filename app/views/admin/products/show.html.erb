@@ -5,3 +5,4 @@
 <p>ジャンル：<%= @genre.name %></p>
 <p>税込価格(税抜価格)：(<%= @product.price %>)円</p>
 <p>販売ステータス：<%= @product_status %></p>
+<h4><%= link_to "編集する", edit_admin_product_path(@product) %></h4>
