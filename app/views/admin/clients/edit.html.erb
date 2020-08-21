@@ -1,12 +1,9 @@
+<div id="admin_client_edit" class="container">
 <%= form_with model: @client, url: admin_client_path(@client.id), local: true do |f| %>
 
-<table>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
+<h3><%= @client.last_name + @client.first_name %>さんの会員情報編集</h3>
+
+<table class="table table-striped">
 
     <tbody>
         <tr>
@@ -56,6 +53,7 @@
     </tbody>
 </table>
 
-    <%= f.submit "変更を保存する" %>
+    <%= f.submit "変更を保存する", class: "btn btn-success" %>
 
 <% end %>
+</div>

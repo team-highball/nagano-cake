@@ -1,41 +1,41 @@
 <div class="container">
-<h3>商品一覧</h3>
+  <h3>商品一覧</h3>
 
-<h1><%= link_to "商品を追加" , new_admin_product_path, class: "btn btn-success" %></h1>
-<table class="table table-hover table-inverse">
+  <h1><%= link_to "商品を追加" , new_admin_product_path, class: "btn btn-success" %></h1>
+  <table class="table table-hover table-inverse">
     <thead>
-        <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜き価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
-        </tr>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜き価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
     </thead>
 
     <tbody>
-        <% @products.each do |product| %>
-        <tr>
-            <td><%= product.id %></td>
-            <td>
-                <%= link_to product.name, admin_product_path(product.id)%>
-            </td>
-            <td><%= product.price %> 円</td>
-            <td><% @genre = Genre.find(product.genre_id)%>
-                    <%= @genre.name %>
-            </td>
-            <td><% if product.is_active == 1 %>
-                    <div class="badge badge-primary">
-                      販売中
-                    </div>
-                <% else %>
-                    <div class="badge badge-danger">
-                      販売停止中
-                    </div>
-                <% end %>
-            </td>
-        </tr>
-        <% end %>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td>
+          <%= link_to product.name, admin_product_path(product.id)%>
+        </td>
+        <td><%= product.price %> 円</td>
+        <td><% @genre = Genre.find(product.genre_id)%>
+          <%= @genre.name %>
+        </td>
+        <td><% if product.is_active == 1 %>
+          <div class="badge badge-primary">
+            販売中
+          </div>
+          <% else %>
+          <div class="badge badge-danger">
+            販売停止中
+          </div>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
     </tbody>
-</table>
+  </table>
 </div>
