@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       when Admin
         "/admins/sign_in"
       when Client
-        root_path
+        "'client/clients#top'"
   end
   end
 
