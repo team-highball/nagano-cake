@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # prepend_before_filter :require_no_authentication, :only => [ :cancel] 
+  # prepend_before_filter :require_no_authentication, :only => [ :cancel]
 
   def after_sign_in_path_for(resource)
-    client_products_path(genre_sort: 0)
+    case resource
+      when Admin
+        admin_admins_top_path
+      when Client
+      client_products_path(genre_sort: 0)
+    end
   end
 
   def after_sign_out_path_for(resource)
