@@ -281,6 +281,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  execjs
   jbuilder (~> 2.5)
   jp_prefecture
   jquery-rails
