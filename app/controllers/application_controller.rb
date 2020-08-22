@@ -13,12 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    case resource
-      when Admin
-        "/admins/sign_in"
-      when Client
-        "'client/clients#top'"
-  end
+    if resource == Admin
+      new_admin_session_path
+    else
+      root_path
+    end
   end
 
   def price_include_tax(price)
