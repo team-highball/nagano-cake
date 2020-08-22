@@ -1,5 +1,4 @@
-<h3>商品新規登録</h3>
-<%= form_for(@product, url: admin_products_path) do |f| %>
+<div id="admin_product_new" class="container">
 
 	<div class="error">
 	<% if @product.errors.any? %>
@@ -11,30 +10,58 @@
 		</ul>
 	<% end %>
 	</div>
-	
-	<div class="field ">
-		<%= f.label :"商品名" %><br>
-		<%= f.text_field :name %>
+
+	<div class="row">
+		<h3>商品新規登録</h3>
 	</div>
 
-    <div class="field ">
-		<%= f.label :"商品説明" %><br>
-		<%= f.text_area :introduction %>
+<%= form_for(@product, url: admin_products_path) do |f| %>
+<div class="row">
+
+	<div class="col-lg-6 col-md-6 col-xs-6">
+
+		<!-- 画像プレビュー機能を作る -->
+		<div class="field product-image">
+			<%= f.label :"商品画像" %>
+			<%= f.attachment_field :product_image %>
+		</div>
+
 	</div>
 
-	<%= f.collection_select :genre_id, Genre.where(is_active: 1), :id, :name, include_blank: "選択して下さい" %>
-
-    <div class="field ">
-		<%= f.label :price %><br>
-		<p><%= f.text_field :price %>円</p>
+	<div class="col-lg-6 col-md-6 col-xs-6">
+		<table class="table">
+			<tbody>
+				<tr>
+					<th><%= f.label :"商品名" %></th>
+					<th><%= f.text_field :name %></th>
+				</tr>
+				<tr>
+					<th><%= f.label :"商品説明" %></th>
+					<th><%= f.text_area :introduction %></th>
+				</tr>
+				<tr>
+					<th><%= f.label :"ジャンル" %></th>
+					<th><%= f.collection_select :genre_id, Genre.where(is_active: 1), :id, :name, include_blank: "選択して下さい" %></th>
+				</tr>
+				<tr>
+					<th><%= f.label :"税抜価格" %></th>
+					<th><%= f.text_field :price %> 円</th>
+				</tr>
+				<tr>
+					<td><%= f.label :"販売ステータス" %></td>
+					<td><%= f.select :is_active, [["販売中", "1"], ["販売中止", "2"]] %></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
-    <div class="field">
-		<%= f.label :image %>
-		<%= f.attachment_field :product_image %>
+</div>
+
+	<div class="row d-flex justify-content-end">
+		<div class="actions">
+			<%= f.submit "新規登録" ,class: "btn btn-primary" %>
+		</div>
 	</div>
 
-	<div class="actions">
-		<%= f.submit "新規登録" ,class: "btn btn-primary" %>
-	</div>
 <% end %>
+</div>
