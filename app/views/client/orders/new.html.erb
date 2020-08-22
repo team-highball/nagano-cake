@@ -21,7 +21,7 @@
       <label><%= f.radio_button :add, 1, checked: "checked" %> ご自身の住所</label> <br />
       <%= @client.postal_code %>
       <%= @client.address %>
-      <%= @client.first_name + @client.last_name %>
+      <%= @client.last_name + @client.first_name %>
     </p>
 
     <!-- 登録済住所 -->
