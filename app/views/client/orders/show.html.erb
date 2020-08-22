@@ -37,7 +37,11 @@
             <strong>支払方法</strong>
           </div>
           <div class="col-lg-9">
-            <%= @order.payment_method %>
+            <% if @order.payment_method == 1 %>
+              <p>クレジットカード</p>
+            <% else %>
+              <p>銀行振込</p>
+            <% end %>
           </div>
         </div>
         <div class="row">
