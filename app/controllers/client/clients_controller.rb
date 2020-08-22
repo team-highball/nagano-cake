@@ -2,8 +2,7 @@ class Client::ClientsController < ApplicationController
 
     def top
     @genres = Genre.where(is_active: 1)
-    @products = Product.limit(4)
-
+    @products = Product.limit(4).order('id DESC')
     end
 
     def about
