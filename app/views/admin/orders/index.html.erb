@@ -15,7 +15,9 @@
           <% @orders.each do |order| %>
           <tr>
               <td><%= link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order.id) %></td>
-              <td><%= order.name %></td>
+              <td><% @client = Client.find(order.client_id) %>
+                  <%= @client.last_name + @client.first_name %>
+              </td>
               <td>
                 <% @order_count = 0%>
                 <% order.order_products.each do |order_product| %>

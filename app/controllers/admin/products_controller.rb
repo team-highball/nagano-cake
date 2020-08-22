@@ -38,6 +38,12 @@ class Admin::ProductsController < ApplicationController
     def update
         @product = Product.find(params[:id])
         if @product.update(product_params)
+            if @product.is_active == 1
+                genre = Genre.find(@product.genre_id)
+                genre.is_active = 1
+                genre.update(genre_params)
+            end
+            
             redirect_to admin_product_path(@product.id)
         else
             render "edit"
@@ -52,6 +58,10 @@ class Admin::ProductsController < ApplicationController
 
     def product_params
         params.require(:product).permit(:name, :product_image, :introduction, :genre_id, :price, :is_active)
+    end
+
+    def genre_params
+        params.permit(:is_active)
     end
 
 
