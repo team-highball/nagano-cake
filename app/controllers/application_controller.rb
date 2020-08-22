@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    if resource == :admin
+      new_admin_session_path
+    else
+      root_path
+    end
   end
 
   def price_include_tax(price)
