@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       when Admin
         admin_admins_top_path
       when Client
-      client_products_path(genre_sort: 0)
+      root_path(genre_sort: 0)
     end
   end
 
