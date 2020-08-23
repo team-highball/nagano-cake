@@ -22,7 +22,7 @@
 						<% @cart_products.each do |cart_product| %>
 
 						<td><%= cart_product.product.name %></td>
-						<td><%= price_include_tax(cart_product.product.price) %></td>
+						<td><%= price_include_tax(cart_product.product.price) %>円</td>
 						<td><%= cart_product.count %></td>
 
 
@@ -35,7 +35,7 @@
 							<% end %>
 						</td>
 						<% sub_price = price_include_tax(cart_product.product.price).to_i * cart_product.count.to_i %>
-						<td>¥<%= sub_price %></td>
+						<td><%= sub_price %>円</td>
 						<td><%= link_to "削除する", client_cart_product_path(cart_product.id), method: :delete, class: "btn btn-primary" %></td>
 						<td></td>
 					</tr>
