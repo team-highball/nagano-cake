@@ -21,6 +21,7 @@ root to: 'client/clients#top'
         get "clients/about" => "clients#about"
         get "clients/withdrawal" => "clients#withdrawal"
         patch "clients" => "clients#update"
+        put "clients/withdraw_done" => "clients#withdraw_done"
         resources :products, only: [:index, :show]
         resources :clients, only: [:show]
         resources :cart_products, only: [:create, :update, :destroy, :index]
