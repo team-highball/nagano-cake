@@ -99,6 +99,7 @@
   <%= f.hidden_field :address,      :value => "#{@order.address}" %>
   <%= f.hidden_field :name,         :value => "#{@order.name}" %>
   <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+  <%= f.hidden_field :add, :value => @add %>
 
   <div class="row space">
     <div class="col-lg-2 offset-lg-5">
