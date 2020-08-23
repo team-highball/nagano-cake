@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class Clients::SessionsController < Devise::SessionsController
+
+  before_action :reject_user, only: [:create]
+
+  protected
+
+  def reject_user
+    @client = Client.find_by(email: params[:client][:email].downcase)
+    if @client.deleted_user == 0
+      redirect_back(fallback_location: root_path)
+    end
+  end
+end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,4 +36,3 @@ class Clients::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-end

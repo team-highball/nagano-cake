@@ -20,7 +20,14 @@ class Client::ClientsController < ApplicationController
 
     def withdrawal
 
-
     end
+
+    def withdraw_done
+    @client = current_client
+    @client.update(deleted_user: 0)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
 
 end
