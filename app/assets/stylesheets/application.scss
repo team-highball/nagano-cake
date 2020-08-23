@@ -24,13 +24,13 @@
    .header{
     padding-top: 10px;
 
-     .header-logo{
-       background-image: url(cake-logo.jpg);
-       background-size: cover;
-       background-position: center;
-       width: 20%;
-       height: 80px;
-     }
+      .header-image{
+
+        a{
+          width: 100%;
+          height: 80px;
+        }
+      }
 
      .welcom-message{
        line-height: 70px;
@@ -38,57 +38,54 @@
    }
  }
 
+ #container{
+   height: 500px;
+   width: 600px;
+ }
+
  .image1 {
-  background-image: url(image1.jpg);
-  background-size: contain;
-}
-.image2 {
-  background-image: url(image2.jpg);
-  background-size: contain;
+    background-image: url(image1.jpg);
+    background-size: contain;
+  }
+  .image2 {
+    background-image: url(image2.jpg);
+    background-size: contain;
+  }
+  .image3 {
+    background-image: url(image3.jpg);
+    background-size: contain;
+  }
+  .image4 {
+    background-image: url(image4.jpg);
+    background-size: contain;
+  }
+  .image5 {
+    background-image: url(image5.jpg);
+    background-size: contain;
+  }
+  .image6 {
+    background-image: url(image6.jpg);
+    background-size: contain;
+  }
+  .image7 {
+    background-image: url(image7.jpg);
+    background-size: contain;
+  }
+  .image8 {
+    background-image: url(image8.jpg);
+    background-size: contain;
+  }
+  .image9 {
+    background-image: url(image9.jpg);
+    background-size: contain;
+  }
+  .image10 {
+    background-image: url(image10.jpg);
+    background-size: contain;
+  }
 
-}
-.image3 {
-  background-image: url(image3.jpg);
-  background-size: contain;
-}
-.image4 {
-  background-image: url(image4.jpg);
-  background-size: contain;
-}
-.image5 {
-  background-image: url(image5.jpg);
-  background-size: contain;
-}
-
-#container{
-  height: 500px;
-  width: 600px;
-}
-
-.image6 {
-  background-image: url(image6.jpg);
-  background-size: contain;
-}
-.image7 {
-  background-image: url(image7.jpg);
-  background-size: contain;
-
-}
-.image8 {
-  background-image: url(image8.jpg);
-  background-size: contain;
-}
-.image9 {
-  background-image: url(image9.jpg);
-  background-size: contain;
-}
-.image10 {
-  background-image: url(image10.jpg);
-  background-size: contain;
-}
-
-#container1{
-  height: 600px;
-  width: 600px;
-  margin:0 auto ;
-}
+  #container1{
+    height: 600px;
+    width: 600px;
+    margin:0 auto ;
+  }

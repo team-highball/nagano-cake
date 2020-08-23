@@ -14,8 +14,16 @@
     <header>
       <div class="header container">
         <div class="row">
-          <div class="header-logo　col-lg-3 col-md-3 col-xs-3">
-            #ロゴ画像
+          <div class="header-image　col-lg-3 col-md-3 col-xs-3">
+            <% if admin_signed_in? %>
+              <%= link_to admin_admins_top_path do %>
+                <%= image_tag 'cake-logo.jpg', size: "170x80" %>
+              <% end %>
+            <% else %>
+              <%= link_to client_clients_top_path do %>
+                <%= image_tag 'cake-logo.jpg', size: "170x80" %>
+              <% end %>
+            <% end %>
           </div>
 
             <% if admin_signed_in? %>

@@ -59,15 +59,15 @@ class Client::OrdersController < ApplicationController
         @order.address         = @shipping_address.address
         @order.name            = @shipping_address.destination
      end
-     
+
      # 入力された新しい住所
     when 3
     if params[:order][:new_add][:postal_code].blank? || params[:order][:new_add][:address].blank? || params[:order][:new_add][:destination].blank?
       render :new
     else
-      @order.postal_code     = params[:order][:new_add][:postal_code]
-      @order.address         = params[:order][:new_add][:address]
-      @order.name            = params[:order][:new_add][:destination]
+      @order.postal_code        = params[:order][:new_add][:postal_code]
+      @order.address            = params[:order][:new_add][:address]
+      @order.name               = params[:order][:new_add][:destination]
     end
    end
   end
@@ -76,6 +76,7 @@ class Client::OrdersController < ApplicationController
   def create
 
     if current_client.cart_products.exists?
+
       @order = Order.new(order_params)
       @order.client_id = current_client.id
       @order.payment_method = params[:order][:payment_method]
@@ -105,9 +106,15 @@ class Client::OrdersController < ApplicationController
           @order.name = params[:order][:name]
          # 新しいお届け先
         when 3
-          @order.postal_code = params[:order][:postal_code]
-          @order.address = params[:order][:address]
-          @order.name = params[:order][:name]
+          @order.postal_code            = params[:order][:postal_code]
+          @order.address                = params[:order][:address]
+          @order.name                   = params[:order][:name]
+          # @orderの内容をshiping_addressに新規登録
+          shipping_address = current_client.shipping_addresses.build
+          shipping_address.address      = @order.address
+          shipping_address.destination  = @order.name
+          shipping_address.postal_code  = @order.postal_code
+          shipping_address.save
       end
       @order.save!
 
@@ -121,6 +128,7 @@ class Client::OrdersController < ApplicationController
         order_products.save
         cp.destroy
       end
+
       render :thanks
 
     else
