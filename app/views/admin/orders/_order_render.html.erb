@@ -1,0 +1,35 @@
+<table class="table">
+      <tbody>
+        <tr>
+            <td>購入者</td>
+            <td><%= link_to client.last_name + client.first_name ,admin_client_path(client) %></td>
+        </tr>
+        <tr>
+            <td>配送先</td>
+            <td>
+              <%= "〒　"+"#{order.postal_code}　" +  order.address %> <br>
+              <%= "　#{order.name}" %>
+            </td>
+        </tr>
+        <tr>
+            <td>支払方法</td>
+            <td>
+                <% if order.payment_method == 1%>
+                    クレジットカード
+                <% else %>
+                    銀行振込
+                <% end %>
+            </td>
+        </tr>
+
+        <tr>
+            <td>注文ステータス</td>
+            <td>
+                <%= form_with model: order, url: admin_order_path(order) do |f| %>
+                    <%= f.select :status , [["入金待ち",1],["入金確認",2],["制作中",3],["発送準備中",4],["発送完了",5]] %>
+                    <%= f.submit "更新", disable_with: 'Submiting...', class: "btn btn-sm btn-success" %>
+                <% end %>
+            </td>
+        </tr>
+      </tbody>
+    </table>

@@ -5,6 +5,8 @@ class Admin::OrderProductsController < ApplicationController
     def update
         @order_product = OrderProduct.find(params[:id])
         @order = Order.find(@order_product.order_id)
+        @client = Client.find(@order.client_id)
+        @order_products = @order.order_products
         @making_order_products = OrderProduct.where(order_id: @order.id, making_status: 3) 
         if @order_product.update(order_product_params)
             @order_products = @order.order_products
@@ -12,21 +14,16 @@ class Admin::OrderProductsController < ApplicationController
                 if @making_order_products.present?
                     @order.status = 3
                     @order.update(product_params)
-                    redirect_back(fallback_location: root_path)
                 else
-                    redirect_back(fallback_location: root_path)
                 end
             elsif @order_product.making_status == 4
                 @maked = OrderProduct.where(order_id: @order.id, making_status: 4)
                 if @order_products.count == @maked.count
                     @order.status = 4
                     @order.update(product_params)
-                    redirect_back(fallback_location: root_path)
                 else
-                    redirect_back(fallback_location: root_path)
                 end
             else
-                redirect_back(fallback_location: root_path)
             end
             
         else
