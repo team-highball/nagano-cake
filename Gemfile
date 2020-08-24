@@ -71,3 +71,6 @@ gem 'pry-byebug'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'execjs'
+
+# エラーメッセージ日本語化gem
+gem 'rails-i18n'

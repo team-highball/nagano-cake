@@ -2,8 +2,12 @@
   <div class="row">
     <h3>配送先登録/一覧</h3>
   </div>
+
   <div class="row form-content">
     <%= form_with model: @shipping_address, url: client_shipping_addresses_path,  local: true do |f| %>
+
+    <%= render 'layouts/error_messages', model: f.object %>
+
     <div class="col-lg-10 col-md-10 colxs-10">
       <table class="table table-borderless">
         <tbody>

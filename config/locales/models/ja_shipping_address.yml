@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      shipping_address: 配送先
+    attributes:
+      shipping_address:
+        address: 配送先
+        destination: 宛名
+        postal_code: 郵便番号

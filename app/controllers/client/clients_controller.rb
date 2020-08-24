@@ -20,8 +20,11 @@ class Client::ClientsController < ApplicationController
 
     def update
       @client = Client.find(params[:id])
-      @client.update(client_params)
-      redirect_to client_client_path(@client)
+      if @client.update(client_params)
+        redirect_to client_client_path(@client)
+      else
+        render :edit
+      end
     end
 
     def withdrawal
