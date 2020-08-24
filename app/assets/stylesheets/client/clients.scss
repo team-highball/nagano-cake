@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#withdrawal{
+	text-align: center;
+
+	h3{
+		margin: 38px 0;
+	}
+	p{
+		margin-bottom: 38px
+	}
+}
+
 .introduction{
 	font-family: 'YuGothic';
 }
@@ -9,6 +20,81 @@
 .cart-btn{
 	width: 10px;
 	float: right;
+	margin-bottom: 120px;
+}
+
+
+#clients_top{
+
+	.top-message{
+		margin-bottom: 24px;;
 	}
 
+	.middle-content{
+		margin-bottom: 24px;
 
+		h3{
+			margin-bottom: 12px;;
+		}
+	}
+}
+
+#clientts_about{
+	text-align: center;
+	line-height: 1.5rem;
+
+	.slide-box{
+		margin-top: 48px;
+	}
+}
+
+#client-show{
+
+	h3{
+		margin-bottom: 32px;
+	}
+
+	.client-info{
+		display: flex;
+		margin-bottom: 32px;
+
+		h4{
+			margin-right: 16px;
+		}
+		a{
+			margin-right: 16px;
+		}
+	}
+
+	.address{
+
+		table{
+			width: 60%;
+
+			th{
+				width: 30%;
+				background-color: #eee;
+			}
+		}
+	}
+
+	.link-box{
+		margin-top: 32px;
+
+		.table{
+
+		}
+
+		table{
+			border-collapse: separate;
+			border-spacing: 0px 8px;
+
+			tr{
+
+				th{
+					padding-right: 32px;
+				}
+			}
+		}
+	}
+}

@@ -1,32 +1,36 @@
-<div class="container">
+<div id="new-session" class="container">
 
-<p>会員の方はこちらからログイン</p>
-<%= flash[:error] %>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :メールアドレス %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row top-text">
+    <h5>会員の方はこちらからログイン</h5>
+    <%= flash[:error] %>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :パスワードを記憶させる %>
-    </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-contant">
+    <table class=form-table>
+      <tr>
+        <th><%= f.label :メールアドレス %></th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :パスワード %></th>
+        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="forget-password">
+    <%= link_to "➡︎パスワードを忘れた方はこちらから", new_client_password_path %>
+  </div>
+  <div class="action">
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
+  </div>
   <% end %>
-  <%= link_to "➡︎パスワードを忘れた方はこちらから", new_client_password_path %>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="registration">
+    登録がお済みで無い方
+    <div class="new-registration">
+      <%= link_to "こちら", new_client_registration_path %> から新規登録を行ってください。
+    </div>
   </div>
-<% end %>
-<p>登録がお済みで無い方</p>
-<%= link_to "こちら", new_client_registration_path %>から新規登録を行ってください。
 
 </div>
