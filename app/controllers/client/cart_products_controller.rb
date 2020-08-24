@@ -25,8 +25,8 @@ class Client::CartProductsController < ApplicationController
         redirect_to client_cart_products_path
       else
         @cart_products = @client.cart_products.all
-        render 'index'
         flash[:danger] = 'カートに商品を追加できませんでした。'
+        render 'index'
       end
 #カート内が空でない場合
     else
@@ -44,21 +44,21 @@ class Client::CartProductsController < ApplicationController
     def update
         # if @cart_product.update(cart_product_params)
         if @cart_product.update(cart_product_params)
-        redirect_to client_cart_products_path
         flash[:success] = 'カート内の商品を更新しました'
+        redirect_to client_cart_products_path
         end
     end
 
     def destroy
         @cart_product.destroy
-        redirect_to client_cart_products_path
         flash[:info] = 'カートの商品を取り消しました。'
+        redirect_to client_cart_products_path
     end
 
     def destroy_all
          @client.cart_products.destroy_all
+         flash[:info] = 'カートを空にしました。'
         redirect_to client_cart_products_path
-        flash[:info] = 'カートを空にしました。'
     end
 
     private

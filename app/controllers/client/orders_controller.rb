@@ -11,8 +11,8 @@ class Client::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     if @order.client_id != current_client.id
-      redirect_back(fallback_location: root_path)
       flash[:alert] = "アクセスに失敗しました"
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -20,6 +20,7 @@ class Client::OrdersController < ApplicationController
   def new
     current_client_cart = current_client.cart_products
     if current_client_cart.blank?
+      flash[:danger] = 'カートが空です。'
       redirect_to client_cart_products_path(current_client)
     else
       @order = Order.new
@@ -132,8 +133,8 @@ class Client::OrdersController < ApplicationController
       render :thanks
 
     else
-      redirect_to client_products_path(genre_sort: 0)
       flash[:danger] = 'カートが空です。'
+      redirect_to client_products_path(genre_sort: 0)
     end
 
   end
