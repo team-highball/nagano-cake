@@ -185,6 +185,25 @@
   }
  }
 
+ #change-password{
+   margin-left: 5%;
+
+   h2{
+     margin-bottom: 32px;
+   }
+   .field{
+     margin-bottom: 18px;
+   }
+
+   .actions{
+     margin-top: 24px;
+     display: flex;
+     justify-content:flex-start;
+     .update{
+       margin-right: 20%;
+     }
+  }
+ }
 
  // =============== deviseここまで ===============
 
