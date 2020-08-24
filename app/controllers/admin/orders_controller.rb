@@ -2,6 +2,16 @@ class Admin::OrdersController < ApplicationController
 
     before_action :authenticate_admin!
 
+    def empty_search(search, option)
+        @status = option.to_i
+        @orders = Order.where(status: @status)
+        if search.blank?
+            @orders = Order.where(status: @status)
+        else
+            @orders = @orders.where("(status LIKE ?) AND (address LIKE ?) OR (postal_code LIKE ?) OR  (name LIKE ?)",@status,"%#{search}%","%#{search}%","%#{search}%")
+        end
+    end
+
     def index
         case params[:order_sort]
             when "0"
@@ -10,7 +20,17 @@ class Admin::OrdersController < ApplicationController
                 @client = Client.find(params[:id])
                 @orders = @client.orders
             else
-                @orders = Order.all
+                if params[:option] == nil
+                    @orders = Order.all
+                elsif params[:option] == "0"
+                    if params[:search].blank?
+                        @orders = Order.all
+                    else
+                        @orders = Order.where("(postal_code LIKE ?) OR (address LIKE ?) OR (name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%")
+                    end
+                else
+                    empty_search(params[:search], params[:option])
+                end
         end
     end
 

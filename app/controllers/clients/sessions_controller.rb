@@ -8,8 +8,10 @@ class Clients::SessionsController < Devise::SessionsController
 
   def reject_user
     @client = Client.find_by(email: params[:client][:email].downcase)
-    if @client.deleted_user == 0
-      redirect_back(fallback_location: root_path)
+    if @client.present?
+      if @client.deleted_user == 0
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 end
