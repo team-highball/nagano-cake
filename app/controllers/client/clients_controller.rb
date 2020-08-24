@@ -9,6 +9,10 @@ class Client::ClientsController < ApplicationController
 
     end
 
+    def edit
+      
+    end
+
     def show
         @client = current_client
     end
