@@ -36,9 +36,11 @@
                   <%= link_to "ジャンル一覧",  admin_genres_path,   class: "btn btn-outline-primary" %>
                   <%= link_to "ログアウト",    destroy_admin_session_path, class: "btn btn-outline-primary", method: :delete %>
                 </div>
-                <form>
-                  <input type="text" name="" value="" placeholder="検索...">
-                </form>
+                <%= form_tag(admin_orders_path, method: :get) do %>
+                      <%= select_tag(:option, options_for_select([["全注文", "0"],["入金待ち", "1"],["入金確認","2"],["制作中","3"],["発送準備中","4"],["発送済","5"]]))%> 
+                      <%= text_field_tag :search %>
+                      <%= submit_tag 'Search' %>
+                  <% end %>
               </div>
             <% elsif client_signed_in? %>
                 <div class="welcom-message col-lg-4 col-md-4 col-xs-4">
