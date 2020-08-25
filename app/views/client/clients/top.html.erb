@@ -1,0 +1,50 @@
+<div id="clients_top" class ="container">
+
+	<div class="top-message row">
+		<div class="col-lg-7 col-md-7 col-xs-10 col-lg-offset-5 col-md-offset-5 col-xs-offset2">
+			
+			<div class="introduction">
+				<h2>ようこそ、NaganoCakeへ！</h2><br>
+				<p>このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、
+				購入には会員登録が必要になります。</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="middle-content row">
+		<div class="col-xs-3 col-md-3 col-lg-3">
+			<%= render 'client/products/search_genre', genres: @genres %>
+		</div>
+
+		<div class="col-xs-9　col-md-9 col-lg-9">
+			<div id="container">
+				<div id="theTarget">
+					<div class="image1"></div>
+					<div class="image2"></div>
+					<div class="image3"></div>
+					<div class="image4"></div>
+					<div class="image5"></div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+<h3>オススメ商品</h3>
+	<div class="row">
+		<% @products.each do |product| %>
+		<div class="col-xs-3 col-md-3 col-lg-3">
+			<%= link_to client_product_path(product.id) do %>
+			<%= attachment_image_tag product, :product_image, :fill, 200, 200, fallback: "no_image.jpg" %>
+			<br>
+			<%= product.name %><br>
+			<%= product.price %>円
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+	<div class="cart-btn">
+		<%= link_to "もっと見る", client_products_path, class: "btn btn-outline-secondary"%>
+	</div>
+
+</div>

@@ -1,0 +1,38 @@
+<div id="admin-order-show" class="container">
+  <div class="row">
+    <h3>注文履歴詳細</h3>
+  </div>
+<%= flash[:alert] %>
+  <div class="row order_render">
+    <%= render "admin/orders/order_render", order: @order, client: @client, order_products: @order_products %>
+  </div>
+</div>
+
+<div class="status container">
+  <div class="row">
+
+    <div class="col-lg-8 col-md-8 col-xs-8 order_products_render">
+      <%= render "admin/orders/order_products_render", order: @order, client: @client, order_products: @order_products %>
+    </div>
+
+    <div class="d-flex align-items-end product-payment col-lg-4 co-md-4 col-sx-4">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @order.total_bill - @order.postage %>円</td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td><%= @order.postage %>円</td>
+          </tr>
+          <tr>
+            <td>請求額合計</td>
+            <td><strong><%= @order.total_bill %>円</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

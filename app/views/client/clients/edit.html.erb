@@ -1,0 +1,78 @@
+<div class="container" id="clients-registration-edit">
+<h2>登録情報編集 </h2>
+
+
+
+<%= form_for(@client, url: client_client_path(@client), html: { method: :put }) do |f| %>
+  <%# <%= render "clients/shared/error_messages", resource: resource %>
+  <%= render 'layouts/error_messages', model: f.object %>
+
+<table class="table table-hover table inverse">
+  <tr>
+  <div class="field">
+    <th><%= f.label :名前 %></th>
+    <td>(姓)</td>
+    <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+    <td>(名)</td>
+    <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+  </div>
+  </tr>
+
+  <tr>
+  <div class="field">
+    <th><%= f.label :フリガナ %></th>
+    <td>(セイ)</td>
+    <td><%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %></td>
+    <td>(メイ)</td><td><%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %></td>
+  </div>
+  </tr>
+
+  <tr>
+  <div class="field">
+    <th><%= f.label :メールアドレス %><br /></th>
+    <td></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    <td></td>
+    <td></td>
+  </div>
+  </tr>
+
+  <tr>
+  <div class="field">
+    <th><%= f.label :郵便番号 %>(ハイフンなし)</th>
+    <td></td>
+    <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+    <td></td>
+    <td></td>
+  </div>
+  </tr>
+
+<tr>
+  <div class="field">
+    <th><%= f.label :住所 %></th>
+    <td></td>
+    <td colspan="3"><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+  </div>
+</tr>
+
+<tr>
+  <div class="field">
+    <th><%= f.label :電話番号 %></th>
+    <td></td>
+    <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+    <td></td>
+    <td></td>
+  </div>
+</tr>
+
+
+
+</table>
+
+  <div class="actions d-flex justify-content-around">
+    <%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
+    <%= link_to "退会する", client_clients_withdrawal_path, class: "btn btn-danger" %>
+  </div>
+<% end %>
+
+</div>

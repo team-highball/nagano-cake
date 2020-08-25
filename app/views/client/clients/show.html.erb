@@ -1,0 +1,58 @@
+<div id="client-show" class="container">
+	<div class="row">
+		<h3>マイページ</h3>
+	</div>
+	<div class="client-info">
+		<h4>登録情報</h4>
+		<%= link_to "編集する",edit_client_client_path,class: "btn btn-primary" %>
+		<%= link_to "パスワードを変更する",edit_client_registration_path,class: "btn btn-primary" %>
+	</div>
+
+	<div class="address">
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<th>氏名</th>
+					<td><%= @client.last_name %>　<%= @client.first_name %></td>
+				<tr>
+					<th>カナ</th>
+					<td><%= @client.kana_last_name %>　<%= @client.kana_first_name %></td>
+				</tr>
+				<tr>
+					<th>郵便番号</th>
+					<td><%= @client.postal_code %></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><%= @client.address %></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><%= @client.phone_number %></td>
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td><%= @client.email %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="link-box">
+		<table table="table">
+			<tbody>
+				<tr>
+					<th>配送先</th>
+					<td>
+						<%= link_to "一覧を見る", client_shipping_addresses_path,class: "btn btn-primary" %>
+					</td>
+				</tr>
+				<tr>
+					<th>注文履歴</th>
+					<td><%= link_to "一覧を見る", client_orders_path,class: "btn btn-primary" %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

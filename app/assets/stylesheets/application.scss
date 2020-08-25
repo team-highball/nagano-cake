@@ -1,0 +1,267 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+
+ header{
+   width: 100%;
+   height: 100px;
+   background-color: #FFFF88;
+   margin-bottom: 32px;
+
+   .header{
+    padding-top: 10px;
+
+      .header-image{
+
+        a{
+          width: 100%;
+          height: 80px;
+        }
+      }
+
+     .welcom-message{
+       line-height: 70px;
+     }
+   }
+ }
+
+// =============== エラーメッセージのCSS記述ここから ===============
+
+ #alert{
+   color: red;
+ }
+
+// =============== deviseここまで ===============
+
+  // =============== devise関係のCSS記述ここから ===============
+ #clients-registration-edit{
+   h2{
+     margin-bottom: 36px;
+   }
+   table{
+     width: 70%;
+     margin-bottom: 38px;
+
+     #client_address{
+       width: 100%;
+     }
+   }
+
+   .actions{
+     width: 70%;
+   }
+ }
+
+ #admin-login{
+  margin: 0 auto;
+
+  h2{
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  table{
+    margin: 0 auto;
+    width: 60%;
+    margin-bottom: 8px;
+
+    p{
+      text-align:right;
+    }
+
+    input{
+       width: 80%;
+    }
+  }
+
+  .actions{
+    text-align: center;
+
+    input{
+      width: 20%;
+    }
+  }
+ }
+
+ #new-session{
+   width: 60%;
+   margin-top: 120px;
+
+   .top-text{
+     margin-bottom: 32px;
+   }
+
+  .form-contant{
+
+    .form-table{
+      border-collapse: separate;
+      border-spacing: 0px 10px;
+    }
+    table{
+      margin: 0 auto;
+
+      tr{
+
+        th{
+          padding-right: 24px;
+
+        }
+        input{
+          width: 250px;
+        }
+      }
+    }
+  }
+
+  .forget-password{
+    text-align: right;
+  }
+
+  .action{
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 46px;
+    input{
+      margin: 0 auto;
+      display: block;
+      width: 30%;
+    }
+  }
+
+  .registration{
+    .new-registration{
+      margin-left: 38px;
+      a{
+        text-decoration:underline;
+      }
+    }
+  }
+ }
+
+ #client-new-registration{
+   width: 70%;
+
+   h2{
+     margin-bottom: 32px;
+   }
+
+   table{
+     border-collapse: separate;
+     border-spacing: 0px 4px;
+     margin-bottom: 12px;
+
+     th{
+       padding-right: 24px;
+     }
+     td{
+       padding-right: 8px;
+     }
+
+    #client_address{
+      width: 100%;
+    }
+   }
+
+  .actions{
+    text-align: center;
+    margin-bottom: 48px;
+    input{
+      width: 200px;
+    }
+  }
+
+  .login{
+    p{
+      margin-left: 24px;
+      a{
+        text-decoration: underline;
+      }
+    }
+  }
+ }
+
+ #change-password{
+   margin-left: 5%;
+
+   h2{
+     margin-bottom: 32px;
+   }
+   .field{
+     margin-bottom: 18px;
+   }
+
+   .actions{
+     margin-top: 24px;
+     display: flex;
+     justify-content:flex-start;
+     .update{
+       margin-right: 20%;
+     }
+  }
+ }
+
+ // =============== deviseここまで ===============
+
+ #container{
+   width: 75%;
+   margin: 0 auto;
+   height: 500px;
+ }
+
+ .image1 {
+    background-image: url(image1.jpg);
+
+  }
+  .image2 {
+    background-image: url(image2.jpg);
+
+  }
+  .image3 {
+    background-image: url(image3.jpg);
+
+  }
+  .image4 {
+    background-image: url(image4.jpg);
+  }
+  .image5 {
+    background-image: url(image5.jpg);
+  }
+  .image6 {
+    background-image: url(image6.jpg);
+    background-size: contain;
+  }
+  .image7 {
+    background-image: url(image7.jpg);
+    background-size: contain;
+  }
+  .image8 {
+    background-image: url(image8.jpg);
+    background-size: contain;
+  }
+  .image9 {
+    background-image: url(image9.jpg);
+    background-size: contain;
+  }
+  .image10 {
+    background-image: url(image10.jpg);
+    background-size: contain;
+  }
+
+  #container1{
+    height: 600px;
+    width: 600px;
+    margin:0 auto ;
+  }

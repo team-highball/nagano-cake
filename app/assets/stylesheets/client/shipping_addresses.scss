@@ -1,0 +1,26 @@
+// Place all the styles related to the client::shipping_addresses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#client_sa_index{
+
+  .address-edit{
+    display: flex;
+  }
+
+  .form-content{
+    margin-bottom: 38px;
+  }
+
+  .sub-btn{
+    float:right;
+  }
+  .deleted{
+    color: red;
+  }
+}
+
+#client_sa_edit{
+
+
+}

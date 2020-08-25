@@ -1,0 +1,2 @@
+$(".order_render").html("<%= j(render partial: 'admin/orders/order_render',  locals: {order: @order, client: @client, order_products: @order_products} ) %>")
+$(".order_products_render").html("<%= j(render partial: 'admin/orders/order_products_render',  locals: {order: @order, client: @client, order_products: @order_products} ) %>")

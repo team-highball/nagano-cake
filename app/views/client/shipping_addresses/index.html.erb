@@ -1,0 +1,60 @@
+<div id="client_sa_index" class="container">
+  <div class="row">
+    <h3>配送先登録/一覧</h3>
+  </div>
+
+  <div class="row form-content">
+    <%= form_with model: @shipping_address, url: client_shipping_addresses_path,  local: true do |f| %>
+
+    <%= render 'layouts/error_messages', model: f.object %>
+
+    <div class="col-lg-10 col-md-10 colxs-10">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :address, "住所" %></td>
+            <td><%= f.text_area :address %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :destination, "宛名" %></td>
+            <td><%= f.text_field :field %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-btn">
+      <%= f.submit "登録する", disable_with: 'Submiting...', class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <table class="table table-hover table-inverse table-bordered">
+        <thead class="table-success">
+            <tr>
+                <th>郵便番号</th>
+                <th>住所</th>
+                <th>宛名</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @shipping_addresses.each do |shipping_address| %>
+            <tr>
+                <td><%= shipping_address.postal_code %></td>
+                <td><%= shipping_address.address %></td>
+                <td><%= shipping_address.destination %></td>
+                <td><%= link_to "編集する", edit_client_shipping_address_path(shipping_address.id) %></td>
+                <td><%= link_to "削除する", client_shipping_address_path(shipping_address.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "deleted" %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+  </div>
+
+</div>

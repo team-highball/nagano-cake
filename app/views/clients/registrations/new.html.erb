@@ -1,0 +1,100 @@
+<div id="client-new-registration" class="container">
+
+  <h2>新規会員登録</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "layouts/error_messages", model: f.object %>
+
+  <table>
+    <tr>
+      <div class="field">
+        <th><%= f.label :名前 %></th>
+        <td>(姓)</td>
+        <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+        <td>(名)</td>
+        <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :フリガナ %></th>
+        <td>(セイ)</td>
+        <td><%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %></td>
+        <td>(メイ)</td>
+        <td><%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :メールアドレス %></th>
+        <td></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        <td></td>
+        <td></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :郵便番号 %>(ハイフンなし)</th>
+        <td></td>
+        <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+        <td></td>
+        <td></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :住所 %></th>
+        <td></td>
+        <td colspan="3"><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+        <td></td>
+        <td></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :電話番号 %></th>
+        <td></td>
+        <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+        <td></td>
+        <td></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %></th>
+          <td></td>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+          <td></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <th><%= f.label :確認用 %></th>
+          <td></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          <td></td>
+        </div>
+      </tr>
+    </table>
+
+    <div class="actions">
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    </div>
+    <% end %>
+    <div class="login">
+      <h3>既に登録済みの方</h3>
+      <p><%= link_to "こちら", new_client_session_path %>からログインしてください。</p>
+    </div>
+
+  </div>

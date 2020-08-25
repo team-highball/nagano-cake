@@ -1,0 +1,55 @@
+<div class="container">
+  <h3>注文履歴一覧</h3>
+
+  <table class="table table-hover table-inverse">
+      <thead>
+          <tr>
+              <th>購入日時</th>
+              <th>購入者</th>
+              <th>注文個数</th>
+              <th>注文ステータス</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+              <td><%= link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order.id) %></td>
+              <td><% @client = Client.find(order.client_id) %>
+                  <%= @client.last_name + @client.first_name %>
+              </td>
+              <td>
+                <% @order_count = 0%>
+                <% order.order_products.each do |order_product| %>
+                <% @order_count += order_product.count %>
+                <% end %>
+                <%= @order_count %>
+              </td>
+              <td>
+                  <% if order.status == 1%>
+                    <div class="badge badge-pill badge-danger">
+                      入金待ち
+                    </div>
+                  <% elsif order.status == 2 %>
+                  <div class="badge badge-pill badge-warning">
+                    入金確認
+                  </div>
+                  <% elsif order.status == 3 %>
+                  <div class="badge badge-pill badge-info">
+                    制作中
+                  </div>
+                  <% elsif order.status == 4 %>
+                  <div class="badge badge-pill badge-secondary">
+                    発送準備中
+                  </div>
+                  <% else %>
+                  <div class="badge badge-pill badge-success">
+                    発送済
+                  </div>
+                  <% end %>
+              </td>
+          </tr>
+          <% end %>
+      </tbody>
+  </table>
+</div>

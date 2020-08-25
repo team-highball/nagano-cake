@@ -1,0 +1,61 @@
+<div id="admin_client_show" class="container">
+<h3><%= @client.last_name + @client.first_name %>さんの会員詳細</h3>
+
+<div class="row">
+<table class="table">
+
+    <tbody>
+        <tr>
+            <td>顧客ID</td>
+            <td><%= @client.id %>
+                <%if @client.deleted_user == 1%>
+                <div class="badge badge-primary"">
+                  有効会員
+                </div>
+                <% else %>
+                <div class="badge badge-danger"">
+                  退会済
+                </div>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td>氏名</td>
+            <td><%= @client.last_name + @client.first_name %></td>
+        </tr>
+        <tr>
+            <td>フリガナ</td>
+            <td><%= @client.kana_last_name + @client.kana_first_name %></td>
+        </tr>
+        <tr>
+            <td>郵便番号</td>
+            <td><%= @client.postal_code %></td>
+        </tr>
+        <tr>
+            <td>住所</td>
+            <td><%= @client.address %></td>
+        </tr>
+        <tr>
+            <td>電話番号</td>
+            <td><%= @client.phone_number %></td>
+        </tr>
+
+        <tr>
+            <td>メールアドレス</td>
+            <td><%= @client.email %></td>
+        </tr>
+        <tr>
+          <td></td><td></td>
+        </tr>
+    </tbody>
+</table>
+  </div>
+  <div class="link-box">
+    <div class="edit-path">
+      <%= link_to "編集する",  edit_admin_client_path, class: "btn btn-success" %>
+    </div>
+    <div class="order-path">
+      <%= link_to "注文履歴一覧を見る",  admin_orders_path(order_sort: 1, id: @client.id), class: "btn btn-info" %>
+    </div>
+  </div>
+</div>

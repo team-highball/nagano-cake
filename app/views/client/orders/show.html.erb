@@ -1,0 +1,92 @@
+<div id="order_show" class="container">
+
+  <div class="row">
+    <h3>注文履歴詳細</h3>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xl-6 col-md-6 col-xs-12">
+      <h4>注文情報</h4>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong>注文日</strong></td>
+            <td><%= simple_time(@order.created_at) %></td>
+          </tr>
+          <tr>
+            <td><strong>配送先</strong></td>
+            <td><%= @order.address %></td>
+          </tr>
+          <tr>
+            <td><strong>支払方法</strong></td>
+            <td>
+              <% if @order.payment_method == 1 %>
+                <p>クレジットカード</p>
+              <% else %>
+                <p>銀行振込</p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-xl-6 col-md-6 col-xs-12">
+      <h4>請求情報</h4>
+
+      <% sum_all = 0 %>
+      <% @order.order_products.each do |op| %>
+        <% sub_total = price_include_tax(op.price).to_i * op.count %>
+        <% sum_all += sub_total %>
+      <% end %>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th><strong>商品合計</strong></th>
+            <th><%= sum_all %>円</th>
+          </tr>
+          <tr>
+            <th><strong>配送料</strong></th>
+            <th><%= @order.postage %>円</th>
+          </tr>
+          <tr>
+            <th><strong>御請求額</strong></th>
+            <th><%= sum_all + @order.postage.to_i %>円</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>注文内容</h4>
+    <table class="table">
+      <tbody>
+        <thead>
+          <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sum_all = 0 %>
+          <% @order.order_products.each do |op| %>
+          <tr>
+            <td><%= op.product.name %></td>
+            <td><%= price_include_tax(op.price) %></td>
+            <td><%= op.count %></td>
+            <td>
+              <strong><%= sub_total = price_include_tax(op.price).to_i * op.count %>円</strong>
+              <% sum_all += sub_total %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </tbody>
+    </table>
+  </div>
+</div>

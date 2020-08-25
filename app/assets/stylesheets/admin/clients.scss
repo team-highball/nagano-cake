@@ -1,0 +1,28 @@
+// Place all the styles related to the admin::clients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h3{
+  margin-bottom: 16px;
+}
+
+#admin_client_edit{
+
+}
+
+
+#admin_client_show{
+
+  .table{
+    width: 80%;
+  }
+
+  .link-box{
+    display: flex;
+
+    .edit-path{
+      margin-right: 24px;
+    }
+
+  }
+}

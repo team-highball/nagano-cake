@@ -1,0 +1,80 @@
+<div id="clientts_about" class="container">
+	<h1>ながのCake</h1>
+	<p>ながのCakeは全国発送可能なケーキ屋さんです。<br>
+		お子様からお年寄りの方までお召し上がりいただけるよう、<br>
+		様々なバリエーションをご用意しております。<br>
+		また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
+	ぜひご注文ください。</p>
+	<div id="container1" class="slide-box">
+		<div id="theTarget">
+			<div class="image6"></div>
+			<div class="image7"></div>
+			<div class="image8"></div>
+			<div class="image9"></div>
+			<div class="image10"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function initMap() {
+// #latitude,longitudeから位置を特定
+var test ={lat: <%= 36.921626 %>, lng: <%= 138.442840 %>};
+var map = new google.maps.Map(document.getElementById('map'), {
+	zoom: 15,
+	center: test
+});
+var transitLayer = new google.maps.TransitLayer();
+transitLayer.setMap(map);
+
+var contentString = '住所：長野県下高井郡野沢温泉村大湯 野沢温泉村';
+var infowindow = new google.maps.InfoWindow({
+	content: contentString
+});
+
+
+ // #Map上の指定した位置にピンを挿して表示する
+ var marker = new google.maps.Marker({
+ 	position:test,
+ 	map: map,
+ 	title: contentString
+ });
+
+ marker.addListener('click', function() {
+ 	infowindow.open(map, marker);
+ });
+}
+</script>
+
+<!-- 以下の記述の中にあるYOUR_API_KEYには取得したご自身のAPIキーを記述してください -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBl8pCgv5eV07H8uJSWnGQmsxUVifrxViQ&callback=initMap">
+</script>
+<!-- #表示するmapのcssです。ご自身でカスタマイズしてください。高さが設定されていないと表示されないことがあります。 -->
+<style type="text/css">
+	#map { height: 200px;
+		width: 200px ;
+	}
+</style>
+<!--
+	#mapの表示 -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th>【店舗情報】</th>
+				<th>住所</th>
+				<th>営業時間</th>
+				<th>定休日</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+
+				<td></td>
+				<td>〒389-2502 長野県下高井郡野沢温泉村大湯 野沢温泉村</td>
+				<td>10：00〜18：00</td>
+				<td>毎週水曜日</td>
+				<td><div id="map"></div></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

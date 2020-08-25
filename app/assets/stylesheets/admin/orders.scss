@@ -1,0 +1,21 @@
+// Place all the styles related to the admin::orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+select{
+  height: 32px;
+  width: 120px;
+}
+
+#admin-order-show{
+  width: 90%;
+  margin-bottom: 36px;
+
+  h3{
+    margin-bottom: 24px;
+  }
+
+  .product-payment{
+    width: 90%;
+  }
+}
