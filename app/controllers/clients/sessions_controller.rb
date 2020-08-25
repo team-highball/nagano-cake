@@ -11,6 +11,7 @@ class Clients::SessionsController < Devise::SessionsController
     if @client.present?
       if @client.deleted_user == 0
         redirect_back(fallback_location: root_path)
+        flash[:danger] = "すでに退会済みのためログイン出来ません。"
       end
     end
   end
