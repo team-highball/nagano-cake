@@ -4,38 +4,40 @@
 
 
 // 商品一覧のcssここから
+#index{
 
-.products-index{
+  .products-index{
 
-  .product_index{
-    display: flex;
-    align-items:baseline;
-    margin-bottom: 32px;
+    .product_index{
+      display: flex;
+      align-items:baseline;
+      margin-bottom: 32px;
 
-    h2{
-      margin-right: 8px;
+      h2{
+        margin-right: 8px;
+      }
     }
-  }
 
-  .product-box{
+    .product-box{
 
 
-    .product{
+      .product{
 
-      .product-image{
-        img{
-          width: 100%;
-          height: 120px;
+        .product-image{
+          img{
+            width: 100%;
+            height: 120px;
+
+          }
+        }
+
+        .product-name{
 
         }
-      }
 
-      .product-name{
+        .product-price{
 
-      }
-
-      .product-price{
-
+        }
       }
     }
   }

@@ -2,13 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#new{
 
-container{
-  .thanks{
+
+  h2{
+    margin-bottom: 32px;
+  }
+
+  .payment_method{
+    margin-left: 24px;
+    margin-bottom: 24px;
+  }
+
+  .select-post{
+    margin-left: 24px;
+    margin-bottom: 32px;
+  }
+
+  #order_address{
+    width: 40%;
+  }
+
+  table{
+    margin-left: 24px;
+
+    #order_new_add_address{
+      width: 500px;
+    }
+  }
+
+  .next-btn{
+    width: 100%;
     text-align: center;
-    margin-top: 200px;
   }
 }
+
+
+.thanks{
+  text-align: center;
+  margin-top: 200px;
+}
+
 
 .index{
   h2{
@@ -19,5 +53,19 @@ container{
 #order_show{
   h3{
     margin-bottom: 36px;
+  }
+}
+
+#confirm{
+  h2{
+    margin-bottom: 32px;
+  }
+
+  .product-container{
+    margin-bottom: 32px;
+  }
+
+  .bottom-box{
+    margin-bottom: 12px;
   }
 }
