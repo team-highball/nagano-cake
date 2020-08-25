@@ -2,8 +2,8 @@
 
   <div class="row top-text">
     <h5>会員の方はこちらからログイン</h5>
-    <%= flash[:error] %>
   </div>
+ <%= flash[:danger] %>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-contant">
