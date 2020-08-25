@@ -1,78 +1,70 @@
-<div class="confirm">
-  <div class="row">
-    <h2>注文情報確認</h2>
-  </div>
+<div id="confirm" class="container">
+
+  <h2>注文情報確認</h2>
 
   <%= form_with(model: @order, url: client_orders_path, local: true) do |f| %>
 
-  <div class="row">
-    <div class="col-lg-5"><h4>商品名</h4></div>
-    <div class="col-lg-2"><h4>単価（税込）</h4></div>
-    <div class="col-lg-2"><h4>数量</h4></div>
-    <div class="col-lg-2"><h4>小計</h4></div>
-  </div>
+  <div class="row product-container">
 
-  <!--  -->
-  <!-- 合計金額の変数定義 -->
-  <% sum_all = 0 %>
-  <% @cart_products.each do |cp| %>
-    <div class="row">
-      <div class="col-lg-3">
-        <%= link_to client_product_path(cp.product) do %>
-          <%= attachment_image_tag(cp.product, :product_image, size: "150x100", fallback: "no_image.jpg") %>
-        <% end %>
-      </div>
-      <div class="col-lg-2">
-        <%= link_to client_product_path(cp.product) do %>
-          <%= cp.product.name %>
-        <% end %>
-      </div>
-      <div class="col-lg-2">
-        <%= price_include_tax(cp.product.price) %>円
-      </div>
-      <div class="col-lg-2">
-        <%= cp.count %>
-      </div>
-      <div class="col-lg-2">
-        <%= sum_product = price_include_tax(cp.product.price).to_i * cp.count %>円
-        <% sum_all += sum_product %>
-      </div>
+    <div class="col-lg-8 col-md-8 col-xs-8">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 合計金額の変数定義 -->
+          <% sum_all = 0 %>
+          <% @cart_products.each do |cp| %>
+          <tr>
+            <td>
+              <%= link_to client_product_path(cp.product) do %>
+                <%= attachment_image_tag(cp.product, :product_image, size: "150x100", fallback: "no_image.jpg") %>
+                <%= cp.product.name %>
+              <% end %>
+            </td>
+            <td><%= price_include_tax(cp.product.price) %>円</td>
+            <td><%= cp.count %></td>
+            <td>
+              <%= sum_product = price_include_tax(cp.product.price).to_i * cp.count %>円
+              <% sum_all += sum_product %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
 
-  <div class="row space">
-    <div class="col-lg-12">
-      <div class="row">
-        <div class="col-lg-3">
-          <strong>送料</strong>
-        </div>
-        <div class="col-lg-3">
-          <%= @order.postage %>円
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <strong>商品合計</strong>
-        </div>
-        <div class="col-lg-3">
-          <%= sum_all.to_i %>円
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <strong>御請求額</strong>
-        </div>
-        <div class="col-lg-3">
-        <% total_billing = sum_all + @order.postage.to_i %>
-        <%= total_billing.to_i %>円
-        </div>
-      </div>
+    <div class="col-lg-4 col-md-4 col-xs-4">
+      <table class="table table-bordered">
+        <tbody class="thead-light">
+          <tr>
+            <th>送料</th>
+            <td><%= @order.postage %>円</td>
+          </tr>
+          <tr>
+            <th>商品合計</th>
+            <td><%= sum_all.to_i %>円</td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <td>
+              <% total_billing = sum_all + @order.postage.to_i %>
+              <%= total_billing.to_i %>円
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="row space-sm">
+  <div class="row space-sm bottom-box">
     <div class="col-lg-2">
-      <h3>支払方法</h3>
+      <h4>支払方法</h4>
     </div>
     <div class="col-lg-4">
       <% if @order.payment_method == 1 %>
@@ -83,13 +75,13 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row bottom-box">
     <div class="col-lg-2">
-      <h3>お届け先</h3>
+      <h4>お届け先</h4>
     </div>
     <div class="col-lg-4">
-      <%= @order.postal_code %>
-      <%= @order.address %>
+      〒 <%= @order.postal_code %>
+      <%= @order.address %> <br>
       <%= @order.name %>
     </div>
   </div>
@@ -103,7 +95,7 @@
 
   <div class="row space">
     <div class="col-lg-2 offset-lg-5">
-    <%= f.submit "購入を確定する", class: "btn btn-danger btn-lg" %>
+    <%= f.submit "購入を確定する", class: "btn btn-success btn-lg" %>
     </div>
   </div>
 

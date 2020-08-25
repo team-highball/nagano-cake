@@ -15,26 +15,42 @@
  */
  @import "bootstrap";
 
+
+ #wrapper{
+   position: relative;
+   min-height: 100vh;
+   padding-bottom: 210px;
+ }
+
  header{
    width: 100%;
    height: 100px;
    background-color: #FFFF88;
    margin-bottom: 32px;
 
-   .header{
+   #header{
     padding-top: 10px;
 
-      .header-image{
+        .header-image{
 
-        a{
-          width: 100%;
-          height: 80px;
+          a{
+            width: 100%;
+            height: 80px;
+          }
         }
-      }
 
-     .welcom-message{
-       line-height: 70px;
-     }
+        .admin_link{
+          width: 100%;
+
+          a{
+            margin-right: 2px;
+            margin-bottom: 4px;
+          }
+        }
+
+       .welcom-message{
+         line-height: 70px;
+       }
    }
  }
 
@@ -44,7 +60,21 @@
    color: red;
  }
 
-// =============== deviseここまで ===============
+// =============== エラーメッセージここまで ===============
+
+
+
+
+// =============== ページネーションのCSS記述ここから ===============
+ .pagination{
+   justify-content: center;
+   margin: 24px 0;
+ }
+
+// =============== ページネーションここまで ===============
+
+
+
 
   // =============== devise関係のCSS記述ここから ===============
  #clients-registration-edit{
@@ -214,6 +244,29 @@
  }
 
  // =============== deviseここまで ===============
+
+
+
+
+
+ // =============== footerここから ===============
+
+ footer{
+   margin-top: auto;
+   height: 80px;
+   color: #fff;
+   background-color: #666;
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+
+   div{
+     text-align: center;
+     line-height: 80px;
+   }
+ }
+
+ // =============== footerここまで ===============
 
  #container{
    width: 75%;

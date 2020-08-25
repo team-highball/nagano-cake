@@ -6,11 +6,9 @@ class Client::ProductsController < ApplicationController
     def index
       @genres = Genre.where(is_active: 1)
       if params[:genre_sort] == "0" || params[:genre_sort] == nil
-        @products = Product.where(is_active: 1)
-        @products = Product.page(params[:page]).per(16)
+        @products = Product.where(is_active: 1).page(params[:page]).per(12)
       else
-        @products = Product.where(genre_id: params[:genre_sort].to_i,is_active: 1)
-        @products = Product.page(params[:page]).per(16)
+        @products = Product.where(genre_id: params[:genre_sort].to_i,is_active: 1).page(params[:page]).per(12)
         genre = Genre.find_by(id: params[:genre_sort].to_i)
         @genre_name = genre.name
       end

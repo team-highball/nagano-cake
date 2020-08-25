@@ -19,7 +19,7 @@ class Admin::ClientsController < ApplicationController
         if @client.update(client_params)
             redirect_to admin_client_path(@client.id)
         else
-            render "edit"
+            redirect_back(fallback_location: root_path)
         end
     end
 

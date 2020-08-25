@@ -2,15 +2,16 @@
 
 	<div class="top-message row">
 		<div class="col-lg-7 col-md-7 col-xs-10 col-lg-offset-5 col-md-offset-5 col-xs-offset2">
-			
+
 			<div class="introduction">
 				<h2>ようこそ、NaganoCakeへ！</h2><br>
 				<p>このサイトは、ケーキ販売のECサイトになります。<br>
-				会員でない方も商品の閲覧はできますが、
+					会員でない方も商品の閲覧はできますが、
 				購入には会員登録が必要になります。</p>
 			</div>
 		</div>
 	</div>
+
 
 	<div class="middle-content row">
 		<div class="col-xs-3 col-md-3 col-lg-3">
@@ -30,7 +31,8 @@
 
 		</div>
 	</div>
-<h3>オススメ商品</h3>
+
+	<h3>オススメ商品</h3>
 	<div class="row">
 		<% @products.each do |product| %>
 		<div class="col-xs-3 col-md-3 col-lg-3">
@@ -47,4 +49,87 @@
 		<%= link_to "もっと見る", client_products_path, class: "btn btn-outline-secondary"%>
 	</div>
 
-</div>
+	<script type="text/javascript">
+		function initMap() {
+// #latitude,longitudeから位置を特定
+var test ={lat: <%= 36.921626 %>, lng: <%= 138.442840 %>};
+var map = new google.maps.Map(document.getElementById('map'), {
+	zoom: 15,
+	center: test
+});
+var transitLayer = new google.maps.TransitLayer();
+transitLayer.setMap(map);
+
+var contentString = '住所：長野県下高井郡野沢温泉村大湯 野沢温泉村';
+var infowindow = new google.maps.InfoWindow({
+	content: contentString
+});
+
+
+ // #Map上の指定した位置にピンを挿して表示する
+ var marker = new google.maps.Marker({
+ 	position:test,
+ 	map: map,
+ 	title: contentString
+ });
+
+ marker.addListener('click', function() {
+ 	infowindow.open(map, marker);
+ });
+}
+</script>
+
+<!-- 以下の記述の中にあるYOUR_API_KEYには取得したご自身のAPIキーを記述してください -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBl8pCgv5eV07H8uJSWnGQmsxUVifrxViQ&callback=initMap">
+</script>
+<!-- #表示するmapのcssです。ご自身でカスタマイズしてください。高さが設定されていないと表示されないことがあります。 -->
+<style type="text/css">
+	#map { height: 200px;
+		width: 800px ;
+	}
+</style>
+<!--
+	#mapの表示 -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th>【店舗情報】</th>
+				<th>住所</th>
+				<th>営業時間</th>
+				<th>定休日</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>〒389-2502 長野県下高井郡野沢温泉村大湯 野沢温泉村</td>
+				<td>10：00〜18：00</td>
+				<td>毎週水曜日</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row">
+		<div id="map" class="col-xs-8 col-md-8 col-lg-8"></div>
+	<div class="col-xs-4 col-md-4 col-lg-4">
+		<div>
+			<div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://localhost:3000/client/clients/top" data-color="default" data-size="small" data-count="true" style="display: none;"></div>
+			<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+		</div>
+		<div>
+			<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</div>
+		<div>
+			<div class="fb-share-button" data-href="http://localhost:3000/client/clients/top" data-layout="button_count" data-size="small">
+				<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fclient%2Fclients%2Ftop&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア
+				</a>
+			</div>
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v8.0" nonce="1Rwr26E8"></script>
+		</div>
+	</div>
+	</div>
+  </div>
