@@ -1,21 +1,13 @@
 <div id="admin_product_edit" class="container">
 
-	<div class="error">
-		<% if @product.errors.any? %>
-		<h2><%= @product.errors.count %>件のエラーが発生しました。</h2>
-		<ul>
-			<%= @product.errors.full_messages.each do |message| %>
-			<li><p>error</p><%= message %></li>
-			<% end %>
-		</ul>
-		<% end %>
-	</div>
-
 	<div class="row">
 		<h3>商品編集</h3>
 	</div>
 
 	<%= form_for(@product, url: admin_product_path(@product.id)) do |f| %>
+
+	<%= render 'layouts/error_messages', model: f.object %>
+
 	<div class="row">
 
 		<div class="col-lg-6 col-md-6 co-xs-6">
