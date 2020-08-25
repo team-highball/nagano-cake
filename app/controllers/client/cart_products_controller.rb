@@ -43,22 +43,25 @@ class Client::CartProductsController < ApplicationController
 
     def update
         # if @cart_product.update(cart_product_params)
+        @cart_products = current_client.cart_products.all
         if @cart_product.update(cart_product_params)
         flash[:success] = 'カート内の商品を更新しました'
-        redirect_to client_cart_products_path
+        #redirect_to client_cart_products_path
         end
     end
 
     def destroy
+        @cart_products = current_client.cart_products.all
         @cart_product.destroy
         flash[:info] = 'カートの商品を取り消しました。'
-        redirect_to client_cart_products_path
+        #redirect_to client_cart_products_path
     end
 
     def destroy_all
-         @client.cart_products.destroy_all
-         flash[:info] = 'カートを空にしました。'
-        redirect_to client_cart_products_path
+        @cart_products = current_client.cart_products.all
+        @client.cart_products.destroy_all
+        flash[:info] = 'カートを空にしました。'
+        #redirect_to client_cart_products_path
     end
 
     private
