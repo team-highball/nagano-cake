@@ -29,7 +29,7 @@ class Admin::GenresController < ApplicationController
                 @products = @genre.products
                 @products.each do |product|
                     product.is_active = 2
-                    product.update(product_params) 
+                    product.update(product_params)
                 end
             end
             redirect_to admin_genres_path

@@ -2,7 +2,7 @@
   <div class="row">
     <h3>注文履歴詳細</h3>
   </div>
-
+<%= flash[:alert] %>
   <div class="row order_render">
     <%= render "admin/orders/order_render", order: @order, client: @client, order_products: @order_products %>
   </div>
