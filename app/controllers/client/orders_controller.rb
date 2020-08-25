@@ -99,7 +99,7 @@ class Client::OrdersController < ApplicationController
         when 1
           @order.postal_code = @client.postal_code
           @order.address = @client.address
-          @order.name = @client.first_name + @client.last_name
+          @order.name = @client.last_name + @client.first_name
         # 登録済住所
         when 2
           @order.postal_code = params[:order][:postal_code]
