@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   # prepend_before_filter :require_no_authentication, :only => [ :cancel]
 
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "ご登録ありがとうございます。ごゆっくりご覧ください。"
+    redirect_to root_path
+  end
 
 
   def after_sign_in_path_for(resource)
