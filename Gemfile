@@ -62,6 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
+# ページングgem
 gem 'kaminari','~> 1.2.1'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
