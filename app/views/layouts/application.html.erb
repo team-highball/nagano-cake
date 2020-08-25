@@ -10,11 +10,12 @@
   </head>
 
   <body>
+    <div id="wrapper">
 
     <header>
-      <div class="header container">
+      <div id="header" class="container">
         <div class="row">
-          <div class="header-image　col-lg-3 col-md-3 col-xs-3">
+          <div class="header-image col-lg-3 col-md-3 col-xs-3">
             <% if admin_signed_in? %>
               <%= link_to admin_admins_top_path do %>
                 <%= image_tag 'cake-logo.jpg', size: "170x80" %>
@@ -25,22 +26,22 @@
               <% end %>
             <% end %>
           </div>
-
             <% if admin_signed_in? %>
-              <div class="col-lg-4 col-md-4 col-xs-4"></div>
               <div class="admin_link col-lg-9 col-md-9 col-xs-9">
-                <div class="admin_login">
-                  <%= link_to "商品一覧",     admin_products_path(genre_sort: 0), class: "btn btn-outline-primary" %>
-                  <%= link_to "会員一覧",     admin_clients_path,  class: "btn btn-outline-primary" %>
-                  <%= link_to "注文履歴一覧",  admin_orders_path,   class: "btn btn-outline-primary" %>
-                  <%= link_to "ジャンル一覧",  admin_genres_path,   class: "btn btn-outline-primary" %>
-                  <%= link_to "ログアウト",    destroy_admin_session_path, class: "btn btn-outline-primary", method: :delete %>
+                <div class="admin_login d-flex justify-content-end">
+                  <%= link_to "商品一覧",     admin_products_path(genre_sort: 0), class: "btn btn-sm btn-outline-primary" %>
+                  <%= link_to "会員一覧",     admin_clients_path,  class: "btn btn-sm btn-outline-primary" %>
+                  <%= link_to "注文履歴一覧",  admin_orders_path,   class: "btn btn-sm btn-outline-primary" %>
+                  <%= link_to "ジャンル一覧",  admin_genres_path,   class: "btn btn-sm btn-outline-primary" %>
+                  <%= link_to "ログアウト",    destroy_admin_session_path, class: "btn btn-sm btn-outline-primary", method: :delete %>
                 </div>
-                <%= form_tag(admin_orders_path, method: :get) do %>
-                      <%= select_tag(:option, options_for_select([["全注文", "0"],["入金待ち", "1"],["入金確認","2"],["制作中","3"],["発送準備中","4"],["発送済","5"]]))%> 
-                      <%= text_field_tag :search %>
-                      <%= submit_tag 'Search' %>
+                <div class="admin-search  d-flex justify-content-end">
+                  <%= form_tag(admin_orders_path, method: :get) do %>
+                    <%= select_tag(:option, options_for_select([["全注文", "0"],["入金待ち", "1"],["入金確認","2"],["制作中","3"],["発送準備中","4"],["発送済","5"]]))%>
+                    <%= text_field_tag :search %>
+                    <%= submit_tag '検索' %>
                   <% end %>
+                </div>
               </div>
             <% elsif client_signed_in? %>
                 <div class="welcom-message col-lg-4 col-md-4 col-xs-4">
@@ -68,5 +69,12 @@
 
     <%= yield %>
 
+    <footer>
+      <div>
+        © HighBall!! 2020
+      </div>
+    </footer>
+
+    </div>
   </body>
 </html>

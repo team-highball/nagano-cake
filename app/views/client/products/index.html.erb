@@ -1,4 +1,4 @@
-<div class="container">
+<div id="index" class="container">
   <div class="row">
 
     <div class="col-xs-3 col-md-3 col-lg-3 col-xl-3">
@@ -11,9 +11,9 @@
         <div class="product_index">
 
           <% if @genre_name.nil? %>
-            <h2>商品一覧</h2><p class="index">(全 <%= @products.count %> 件)</p>
+            <h2>商品一覧</h2><p class="index">(全 <%= Product.where(is_active: 1).count %> 件)</p>
           <% else %>
-            <h2><%= @genre_name %>一覧</h2><p class="index">(全 <%= @products.count %> 件)</p>
+            <h2><%= @genre_name %>一覧</h2><p class="index">(全 <%= Product.where(genre_id: params[:genre_sort].to_i,is_active: 1).count %> 件)</p>
           <% end %>
         </div>
 
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
+      <%= paginate @products %>
     </div>
-    <%= paginate @products %>
   </div>
 </div>
