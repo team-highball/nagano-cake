@@ -9,4 +9,8 @@ module ApplicationHelper
     time.strftime("%Y-%m-%d　%H:%M　")
   end
 
+  def price_with_comma(price)
+    price.to_s(:delimited, delimiter: ',')
+  end
+
 end

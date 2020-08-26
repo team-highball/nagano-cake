@@ -15,7 +15,7 @@
 						<% cart_products.each do |cart_product| %>
 
 						<td><%= cart_product.product.name %></td>
-						<td><%= price_include_tax(cart_product.product.price) %>円</td>
+						<td><%= price_with_comma(price_include_tax(cart_product.product.price)) %>円</td>
 						<td><%= cart_product.count %></td>
 
                         <td>
@@ -28,7 +28,7 @@
 							<% end %>
 						</td>
 						<% sub_price = price_include_tax(cart_product.product.price).to_i * cart_product.count.to_i %>
-						<td><%= sub_price %>円</td>
+						<td><%= price_with_comma(sub_price) %>円</td>
 						<td><%= link_to "削除する", client_cart_product_path(cart_product.id), method: :delete, class: "btn btn-primary", remote: true %></td>
 						<td></td>
 					</tr>
@@ -38,4 +38,4 @@
 					<% end %>
 				</tbody>
 			</table>
-			<p>合計金額: <%= @total_bill %>円<br></p>
+			<p>合計金額: <%= price_with_comma(@total_bill) %>円<br></p>
