@@ -19,7 +19,7 @@
               <p><%= @product.introduction %></p>
             </div>
             <div class="product-price">
-                <p class="price">¥ <%= price_include_tax(@tax_price) %></p>
+                <p class="price">¥ <%= price_with_comma(price_include_tax(@tax_price)) %></p>
                 <p>(税込み)</p>
             </div>
             <div class="select-count">

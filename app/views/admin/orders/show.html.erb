@@ -20,15 +20,15 @@
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td><%= @order.total_bill - @order.postage %>円</td>
+            <td><%= price_with_comma(@order.total_bill - @order.postage) %>円</td>
           </tr>
           <tr>
             <td>送料</td>
-            <td><%= @order.postage %>円</td>
+            <td><%= price_with_comma(@order.postage) %>円</td>
           </tr>
           <tr>
             <td>請求額合計</td>
-            <td><strong><%= @order.total_bill %>円</strong></td>
+            <td><strong><%= price_with_comma(@order.total_bill) %>円</strong></td>
           </tr>
         </tbody>
       </table>
