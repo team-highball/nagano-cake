@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta content="text/html"; charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <h4><%= @order.client.last_name + @order.client.first_name %>　様</h4>
+  <p><%= @order.client.last_name + @order.client.first_name %>　様のご注文が完了いたしました。</p>
+  <p>以下、ご注文内容となります。</p>
+  <p>誠にありがとうございます。</p>
+  <table>
+    <tr>
+      <th>配送先お名前</th>
+      <td><%= @order.name %>　様</td>
+    </tr>
+    <tr>
+      <th>配送先住所</th>
+      <td>〒 <%= @order.postal_code %> <%= @order.address %></td>
+    </tr>
+    <tr>
+      <th>ご請求額</th>
+      <td><%= @order.total_bill %> 円</td>
+    </tr>
+    <tr>
+      <th>お支払い方法</th>
+      <td>
+        <% if @order.payment_method == 1 %>
+          クレジットカード
+        <% else %>
+          銀行振込
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>ご注文日</th>
+      <td><%= @order.created_at %></td>
+    </tr>
+  </table>
+</body>
+
+</html>
