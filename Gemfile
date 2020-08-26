@@ -76,3 +76,6 @@ gem 'execjs'
 
 # エラーメッセージ日本語化gem
 gem 'rails-i18n'
+
+# 環境変数設定gem
+gem 'dotenv-rails'
