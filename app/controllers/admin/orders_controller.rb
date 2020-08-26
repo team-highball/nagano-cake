@@ -8,7 +8,12 @@ class Admin::OrdersController < ApplicationController
         if search.blank?
             @orders = Order.where(status: @status)
         else
-            @orders = @orders.where("(status LIKE ?) AND (address LIKE ?) OR (postal_code LIKE ?) OR  (name LIKE ?)",@status,"%#{search}%","%#{search}%","%#{search}%")
+            if search == "クレジットカード"
+                @payment_method = 1
+            elsif search == "銀行振り込み" || search == "銀行振込"
+                @payment_method = 2
+            end
+            @orders = @orders.where("(status LIKE ?) AND (address LIKE ?) OR (postal_code LIKE ?) OR  (name LIKE ?) OR (payment_method LIKE ?)",@status,"%#{search}%","%#{search}%","%#{search}%",@payment_method)
         end
     end
 
@@ -26,7 +31,12 @@ class Admin::OrdersController < ApplicationController
                     if params[:search].blank?
                         @orders = Order.all
                     else
-                        @orders = Order.where("(postal_code LIKE ?) OR (address LIKE ?) OR (name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%")
+                        if params[:search] == "クレジットカード"
+                            @payment_method = 1
+                        elsif params[:search] == "銀行振り込み" || params[:search] == "銀行振込"
+                            @payment_method = 2
+                        end
+                        @orders = Order.where("(postal_code LIKE ?) OR (address LIKE ?) OR (name LIKE ?) OR (payment_method LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%", @payment_method)
                     end
                 else
                     empty_search(params[:search], params[:option])
@@ -69,3 +79,4 @@ class Admin::OrdersController < ApplicationController
     end
 
 end
+
