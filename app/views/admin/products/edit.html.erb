@@ -13,8 +13,9 @@
 		<div class="col-lg-6 col-md-6 co-xs-6">
 			<!-- 画像のプレビュー機能を作る -->
 			<div class="field product-image">
-				<%= f.label :"商品画像" %> <br>
-				<%= f.attachment_field :product_image %>
+				<%= f.label :"商品画像" %>
+				<%= f.attachment_field :product_image , onchange: 'previewImage(preview)' %>
+				<%= attachment_image_tag(@product, :product_image,  size: "300x220", format: 'jpeg', fallback: "no-image-mini.jpg", id: 'preview') %>
 			</div>
 		</div>
 
