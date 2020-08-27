@@ -32,16 +32,19 @@
         }
 
         .product-name{
-
+          font-family: 'YuGothic';
+          color: #c0c0c0;
         }
 
         .product-price{
-
+          color: gray;
         }
       }
     }
   }
 }
+
+
 
 // ここまで
 
@@ -97,3 +100,8 @@
 }
 
 // ここまで
+
+.genre_color{
+  font-family: 'YuGothic';
+  color: gray;
+}

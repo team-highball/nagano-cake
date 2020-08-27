@@ -11,27 +11,29 @@
         <div class="product_index">
 
           <% if @genre_name.nil? %>
-            <h2>商品一覧</h2><p class="index">(全 <%= Product.where(is_active: 1).count %> 件)</p>
+          <h2>商品一覧</h2><p class="index">(全 <%= Product.where(is_active: 1).count %> 件)</p>
           <% else %>
-            <h2><%= @genre_name %>一覧</h2><p class="index">(全 <%= Product.where(genre_id: params[:genre_sort].to_i,is_active: 1).count %> 件)</p>
+          <h2><%= @genre_name %>一覧</h2><p class="index">(全 <%= Product.where(genre_id: params[:genre_sort].to_i,is_active: 1).count %> 件)</p>
           <% end %>
         </div>
 
         <div class="product-box container">
           <div class="row">
-          <% @products.each do |product| %>
-            <%= link_to client_product_path(product.id),class: "product col-xs-3 col-md-3 col-lg-3 col-xl-3" do %>
-                <div class="product-image">
-                  <%= attachment_image_tag product, :product_image, format: "jpeg" %>
-                </div>
-                <div class="product-name">
-                  <%= product.name %>
-                </div>
-                <div class="product-price">
-                  <p>¥ <%= price_with_comma(product.price) %></p>
-                </div>
+            <% @products.each do |product| %>
+            <div class="product col-xs-3 col-md-3 col-lg-3 col-xl-3">
+              <%= link_to client_product_path(product.id) do %>
+              <div class="product-image">
+                <%= attachment_image_tag product, :product_image, format: "jpeg" %>
+              </div>
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <% end %>
+              <div class="product-price">
+                <%= price_with_comma(product.price) %>円
+              </div>
+            </div>
             <% end %>
-          <% end %>
           </div>
         </div>
       </div>
