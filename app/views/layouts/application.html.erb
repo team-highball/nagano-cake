@@ -5,6 +5,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -48,18 +49,36 @@
             <p>ようこそ　<%= current_client.last_name + current_client.first_name %>　さん！</p>
           </div>
           <div class="client_login col-lg-5 col-md-5 col-xs-5">
-            <%= link_to "マイページ",    client_client_path(current_client), class: "btn btn-outline-primary" %>
-            <%= link_to "商品一覧",      client_products_path(genre_sort: 0), class: "btn btn-outline-primary" %>
-            <%= link_to "カート",        client_cart_products_path, class: "btn btn-outline-primary" %>
-            <%= link_to "ログアウト",    destroy_client_session_path, class: "btn btn-outline-primary", method: :delete %>
-          </div>
+
+            <%= link_to client_client_path(current_client) do %>
+            <i class="fas fa-user"></i>マイページ
+            <% end %>
+
+            <%= link_to client_products_path(genre_sort: 0) do %>
+            <i class="fas fa-gift"></i>商品一覧
+            <% end %>
+            <%= link_to client_cart_products_path do %>
+            <i class="fas fa-cart-plus"></i>カート
+            <% end %>
+            <%= link_to destroy_client_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i>ログアウト
+          <% end %>
+
           <% else %>
           <div class="col-lg-4 col-md-4 col-xs-4"></div>
           <div class="after_login col-lg-5 col-md-5 col-xs-5">
-            <%= link_to "About",      client_clients_about_path,    class: "btn btn-outline-primary" %>
-            <%= link_to "商品一覧",    client_products_path(genre_sort: 0), class: "btn btn-outline-primary" %>
-            <%= link_to "新規登録",    new_client_registration_path,  class: "btn btn-outline-primary" %>
-            <%= link_to "ログイン",    new_client_session_path,       class: "btn btn-outline-primary" %>
+            <%= link_to client_clients_about_path do %>
+            <i class="fas fa-store"></i>About
+            <% end %>
+           <%= link_to client_products_path(genre_sort: 0) do %>
+            <i class="fas fa-gift"></i>商品一覧
+            <% end %>
+            <%= link_to new_client_registration_path do%>
+            <i class="fas fa-user-plus"></i>新規登録
+            <% end %>
+            <%= link_to new_client_session_path do %>
+            <i class="fas fa-sign-in-alt"></i>ログイン
+            <% end %>
           </div>
           <% end %>
 

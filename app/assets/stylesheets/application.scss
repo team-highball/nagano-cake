@@ -51,6 +51,16 @@
        .welcom-message{
          line-height: 70px;
        }
+       .client_login{
+        a{
+        color: #c0c0c0;
+        }
+       }
+       .after_login{
+       a{
+        color: #c0c0c0;
+       }
+       }
    }
  }
 
@@ -243,6 +253,7 @@
   }
  }
 
+
  // =============== deviseここまで ===============
 
 
@@ -318,3 +329,9 @@
     width: 600px;
     margin:0 auto ;
   }
+
+
+
+
+
+

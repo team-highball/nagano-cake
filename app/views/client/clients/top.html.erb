@@ -39,9 +39,13 @@
 			<%= link_to client_product_path(product.id) do %>
 			<%= attachment_image_tag product, :product_image, :fill, 200, 200, fallback: "no_image.jpg" %>
 			<br>
-			<%= product.name %><br>
-			<%= price_with_comma(product.price) %>円
+			<div class="product-name">
+				<%= product.name %><br>
+			</div>
 			<% end %>
+			<div class="product-price">
+				<%= price_with_comma(product.price) %>円
+			</div>
 		</div>
 		<% end %>
 	</div>
@@ -113,20 +117,20 @@ src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBl8pCgv5eV07H8uJS
 	</table>
 	<div class="row">
 		<div id="map" class="col-xs-8 col-md-8 col-lg-8"></div>
-	<div class="col-xs-4 col-md-4 col-lg-4">
-		<div>
-			<div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://localhost:3000/client/clients/top" data-color="default" data-size="small" data-count="true" style="display: none;"></div>
-			<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-			<script type="text/javascript">LineIt.loadButton();</script>
+		<div class="col-xs-4 col-md-4 col-lg-4">
+			<div>
+				<div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://localhost:3000/client/clients/top" data-color="default" data-size="small" data-count="true" style="display: none;"></div>
+				<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+				<script type="text/javascript">LineIt.loadButton();</script>
+			</div>
+			<div>
+				<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</div>
+
+
+			<iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost%3A3000%2Fclient%2Fclients%2Ftop&layout=button_count&size=small&width=80&height=20&appId" width="80" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
 		</div>
-		<div>
-			<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
-			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-		</div>
-
-
-		<iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost%3A3000%2Fclient%2Fclients%2Ftop&layout=button_count&size=small&width=80&height=20&appId" width="80" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
 	</div>
-	</div>
-  </div>
+</div>
