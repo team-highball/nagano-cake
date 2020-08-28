@@ -20,7 +20,7 @@
 
 <img width="261" alt="gems" src="https://user-images.githubusercontent.com/62973593/91529418-3a193580-e944-11ea-8a36-5891fc96188f.png">
 
-##　機能
+## 機能
 
 # 開発環境
 
