@@ -4,7 +4,8 @@
 ## 詳細
 
 ## ER図
-図
+
+<img width="637" alt="ER図" src="https://user-images.githubusercontent.com/62973593/91528137-0dfcb500-e942-11ea-814d-e5a2155574b6.png">
 
 ## アプリケーション詳細設計図
 
@@ -22,9 +23,13 @@ Ruby on Rails
 
 #　推奨環境
 
+Ruby 2.5 以降 Rails 5.2 以降
+
 # 開発者
 
 ## チーム名
+
+ハイボール！
 
 ## メンバー
 
