@@ -120,7 +120,7 @@ class Client::OrdersController < ApplicationController
       @order.save!
 
       # メール送信機能
-      SampleMailer.send_when_purchase(@order).deliver
+      # SampleMailer.send_when_purchase(@order).deliver
 
       # cart_productsの内容をorder_productsに新規登録
       current_client.cart_products.each do |cp|
