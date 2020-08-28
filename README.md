@@ -1,6 +1,5 @@
 # 長野ケーキ（ECサイト）
 
-
 ## 詳細
 
 ## ER図
@@ -11,7 +10,15 @@
 
 * 顧客側
 
+<img width="675" alt="顧客側アプリケーション詳細設計図" src="https://user-images.githubusercontent.com/62973593/91529346-148c2c00-e944-11ea-9d17-6846f60f1707.png">
+
 * 管理者側
+
+<img width="676" alt="管理者側アプリケーション詳細設計図" src="https://user-images.githubusercontent.com/62973593/91529376-240b7500-e944-11ea-8a8c-a5f6cf07ce34.png">
+
+* gem
+
+<img width="261" alt="gems" src="https://user-images.githubusercontent.com/62973593/91529418-3a193580-e944-11ea-8a36-5891fc96188f.png">
 
 ##　機能
 
@@ -33,11 +40,11 @@ Ruby 2.5 以降 Rails 5.2 以降
 
 ## メンバー
 
-*
+*キタカツ
 
-*
+*ちひろ
 
-*
+*ERA
 
 # 作成期間
 
