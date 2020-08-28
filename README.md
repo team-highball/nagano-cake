@@ -1,24 +1,41 @@
-# README
+# 長野ケーキ（ECサイト）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## 詳細
 
-* Ruby version
+## ER図
+図
 
-* System dependencies
+## アプリケーション詳細設計図
 
-* Configuration
+* 顧客側
 
-* Database creation
+* 管理者側
 
-* Database initialization
+##　機能
 
-* How to run the test suite
+# 開発環境
 
-* Services (job queues, cache servers, search engines, etc.)
+Ruby on Rails
 
-* Deployment instructions
+## インストール
 
-* ...
+#　推奨環境
+
+# 開発者
+
+## チーム名
+
+## メンバー
+
+*
+
+*
+
+*
+
+# 作成期間
+
+2020/8/11 制作着手 ~ 2020/8/29 完成 
+
+
