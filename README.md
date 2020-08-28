@@ -1,24 +1,63 @@
-# README
+# 長野ケーキ（ECサイト）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 詳細
 
-Things you may want to cover:
+## ER図
 
-* Ruby version
+<img width="637" alt="ER図" src="https://user-images.githubusercontent.com/62973593/91528137-0dfcb500-e942-11ea-814d-e5a2155574b6.png">
 
-* System dependencies
+## アプリケーション詳細設計図
 
-* Configuration
+* 顧客側
 
-* Database creation
+<img width="675" alt="顧客側アプリケーション詳細設計図" src="https://user-images.githubusercontent.com/62973593/91529346-148c2c00-e944-11ea-9d17-6846f60f1707.png">
 
-* Database initialization
+* 管理者側
 
-* How to run the test suite
+<img width="676" alt="管理者側アプリケーション詳細設計図" src="https://user-images.githubusercontent.com/62973593/91529376-240b7500-e944-11ea-8a8c-a5f6cf07ce34.png">
 
-* Services (job queues, cache servers, search engines, etc.)
+* gem
 
-* Deployment instructions
+<img width="261" alt="gems" src="https://user-images.githubusercontent.com/62973593/91529418-3a193580-e944-11ea-8a36-5891fc96188f.png">
 
-* ...
+## 機能
+
+# 開発環境
+
+Ruby on Rails
+
+## インストール
+
+```
+$ git clone git@github.com:team-highball/nagano-cake.git
+
+$ cd nagano-cake
+
+$ bundle install
+
+$ rails db:migrate
+```
+
+# 推奨環境
+
+Ruby 2.5 以降 Rails 5.2 以降
+
+# 開発者
+
+## チーム名
+
+ハイボール！
+
+## メンバー
+
+* キタカツ
+
+* ちひろ
+
+* ERA
+
+# 作成期間
+
+2020/8/11 制作着手 ~ 2020/8/29 完成 
+
+
