@@ -2,7 +2,7 @@ class Client::ShippingAddressesController < ApplicationController
 
     def index
         @shipping_address   = ShippingAddress.new
-        @shipping_addresses = ShippingAddress.where(client_id: current_client.id)
+        @shipping_addresses = current_client.shipping_addresses
     end
 
     def edit
@@ -10,11 +10,10 @@ class Client::ShippingAddressesController < ApplicationController
     end
 
     def create
-        #アソシエーション未実装
         @shipping_address = ShippingAddress.new(shipping_address_params)
         @shipping_address.client_id = current_client.id
         @shipping_address.phone_number = current_client.phone_number
-        @shipping_addresses = ShippingAddress.where(client_id: current_client.id)
+        @shipping_addresses = current_client.shipping_addresses
         if @shipping_address.save
             redirect_to client_shipping_addresses_path
         else

@@ -8,20 +8,20 @@
 
     <%= render 'layouts/error_messages', model: f.object %>
 
-    <div class="col-lg-10 col-md-10 colxs-10">
+    <div class="col-lg-10 col-md-10 col-xs-10">
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+            <td class = "label"><%= f.label :address, "郵便番号" %></td>
             <td><%= f.text_field :postal_code %></td>
           </tr>
           <tr>
-            <td><%= f.label :address, "住所" %></td>
+            <td class = "label"><%= f.label :address, "住所" %></td>
             <td><%= f.text_area :address %></td>
           </tr>
           <tr>
-            <td><%= f.label :destination, "宛名" %></td>
-            <td><%= f.text_field :field %></td>
+            <td class = "label"><%= f.label :destination, "宛名" %></td>
+            <td><%= f.text_field :destination %></td>
           </tr>
         </tbody>
       </table>
