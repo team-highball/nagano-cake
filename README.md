@@ -28,7 +28,17 @@ Ruby on Rails
 
 ## インストール
 
-#　推奨環境
+```
+$ git clone git@github.com:team-highball/nagano-cake.git
+
+$ cd nagano-cake
+
+$ bundle install
+
+$ rails db:migrate
+```
+
+# 推奨環境
 
 Ruby 2.5 以降 Rails 5.2 以降
 
@@ -40,11 +50,11 @@ Ruby 2.5 以降 Rails 5.2 以降
 
 ## メンバー
 
-*キタカツ
+* キタカツ
 
-*ちひろ
+* ちひろ
 
-*ERA
+* ERA
 
 # 作成期間
 
