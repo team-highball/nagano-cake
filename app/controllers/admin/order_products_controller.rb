@@ -9,23 +9,18 @@ class Admin::OrderProductsController < ApplicationController
         @order_products = @order.order_products
         @making_order_products = OrderProduct.where(order_id: @order.id, making_status: 3) 
         if @order_product.update(order_product_params)
-            @order_products = @order.order_products
             if @order_product.making_status == 3
                 if @making_order_products.present?
                     @order.status = 3
                     @order.update(product_params)
-                else
                 end
             elsif @order_product.making_status == 4
-                @maked = OrderProduct.where(order_id: @order.id, making_status: 4)
-                if @order_products.count == @maked.count
+                @maked_order_products = OrderProduct.where(order_id: @order.id, making_status: 4)
+                if @order_products.count == @maked_order_products.count
                     @order.status = 4
                     @order.update(product_params)
-                else
                 end
-            else
             end
-            
         else
             render "admin/orders#show"
         end
