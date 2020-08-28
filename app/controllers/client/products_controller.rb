@@ -21,6 +21,7 @@ class Client::ProductsController < ApplicationController
       @cart_product = CartProduct.new
     end
 
+
     private
 
     def active_genres
