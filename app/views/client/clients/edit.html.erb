@@ -1,8 +1,6 @@
 <div class="container" id="clients-registration-edit">
 <h2>登録情報編集 </h2>
 
-
-
 <%= form_for(@client, url: client_client_path(@client), html: { method: :put }) do |f| %>
   <%# <%= render "clients/shared/error_messages", resource: resource %>
   <%= render 'layouts/error_messages', model: f.object %>
