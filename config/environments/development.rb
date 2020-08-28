@@ -40,7 +40,7 @@ Rails.application.configure do
     port:587,
     user_name: ENV["EMAIL"],
     password: ENV["SECRET_KEY"],
-    authentication: :plain
+    authentication: 'plain'
   }
 
   config.action_mailer.perform_caching = false
