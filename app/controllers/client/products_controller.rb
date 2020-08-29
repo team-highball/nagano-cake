@@ -3,10 +3,19 @@ class Client::ProductsController < ApplicationController
   before_action :active_genres, only: [:index]
   before_action :active_products, only: [:show]
 
+
     def index
       @genres = Genre.where(is_active: 1)
       if params[:genre_sort] == "0" || params[:genre_sort] == nil
+        if params[:keyword] == "1"
+          @products = Product.where(is_active: 1).order(price: "DESC").page(params[:page]).per(12)
+        elsif params[:keyword] == "2"
+          @products = Product.where(is_active: 1).order(price: "ASC").page(params[:page]).per(12)
+        elsif params[:keyword] == "3"
+          @products = Product.where(is_active: 1).order(updated_at: "DESC").page(params[:page]).per(12)
+        else
         @products = Product.where(is_active: 1).page(params[:page]).per(12)
+      end
       else
         @products = Product.where(genre_id: params[:genre_sort].to_i,is_active: 1).page(params[:page]).per(12)
         genre = Genre.find_by(id: params[:genre_sort].to_i)
@@ -14,13 +23,13 @@ class Client::ProductsController < ApplicationController
       end
     end
 
+
     def show
       @genres = Genre.where(is_active: 1)
       @product = Product.find(params[:id])
       @tax_price = @product.price
       @cart_product = CartProduct.new
     end
-
 
     private
 
